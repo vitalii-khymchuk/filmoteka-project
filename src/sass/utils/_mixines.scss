@@ -1,0 +1,43 @@
+@mixin flex-center($ai: center, $jc: center) {
+  display: flex;
+  align-items: $ai;
+  justify-content: $jc;
+}
+
+@mixin mob-only {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tab-only {
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin pc-only {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin mob-tab {
+  @media screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin tab-pc {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    @content;
+  }
+}
