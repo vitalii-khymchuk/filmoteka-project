@@ -1,0 +1,20 @@
+.container {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  @include mob-only {
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 320px;
+  }
+  @include tab-only {
+    padding-left: 32px;
+    padding-right: 32px;
+    width: 768px;
+  }
+  @include pc-only {
+    padding-left: 32px;
+    padding-right: 32px;
+    width: 1280px;
+  }
+}
