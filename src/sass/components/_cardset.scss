@@ -1,5 +1,4 @@
 .card-set {
-  outline: 1px solid black;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -15,7 +14,6 @@
 }
 
 .card-set__item {
-  outline: 1px solid blue;
   width: 280px;
   height: 443px;
 
