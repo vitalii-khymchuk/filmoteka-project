@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { getSavedMovies } from './saveMovie';
 
 const refs = {
@@ -30,6 +31,10 @@ function switchActiveBtn(activeBtn, notActiveBtn) {
 //call function that create markup with data from local storage
 function renderSavedMovies(libName) {
   const data = getSavedMovies(libName);
+  if (!data[0]) {
+    Notify.info(`You have'nt added any movies to ${libName}`);
+    return;
+  }
   //   makeMarkup(data);
   console.log(data);
 }
