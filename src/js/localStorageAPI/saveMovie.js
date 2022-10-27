@@ -1,4 +1,5 @@
 import movieData from '../../data/one.json';
+export { prepareMovieToSaving, getSavedMovies, removeEventListeners };
 
 const refs = {
   btn1: document.querySelector('.btn1'),
@@ -51,11 +52,6 @@ function prepareMovieToSaving(data) {
 }
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-function addEvtListeners() {
-  refs.btn1.addEventListener('click', () => toggleMovie('watched'));
-  refs.btn2.addEventListener('click', () => toggleMovie('queue'));
-}
-
 //this call other functions (that save or delete movie from local storage ),
 //depends on available this movie in loc storage
 function toggleMovie(libName) {
@@ -101,6 +97,7 @@ function saveMovie(libName) {
   const savedMovies = getSavedMovies(libName);
   savedMovies.push(currentMovieData);
   rewriteLocStorage(libName, savedMovies);
+  // makeMarkup(savedMovies);
 }
 //////////////////////////////////////////////////////////////////////////////
 
@@ -112,6 +109,7 @@ function deleteMovie(libName) {
   );
   savedMovies.splice(indexOfMovieToDelete, 1);
   rewriteLocStorage(libName, savedMovies);
+  // makeMarkup(savedMovies);
 }
 ///////////////////////////////////////////////////////////////////////////
 
@@ -126,5 +124,15 @@ function rewriteLocStorage(libName, data) {
   localStorage.setItem(libName, JSON.stringify(data));
 }
 ///////////////////////////////////////////////////////////////////////////
+
+function addEvtListeners() {
+  refs.btn1.addEventListener('click', () => toggleMovie('watched'));
+  refs.btn2.addEventListener('click', () => toggleMovie('queue'));
+}
+
+function removeEventListeners() {
+  refs.btn1.replaceWith(refs.btn1.cloneNode(true));
+  refs.btn2.replaceWith(refs.btn2.cloneNode(true));
+}
 
 prepareMovieToSaving(movieData);
