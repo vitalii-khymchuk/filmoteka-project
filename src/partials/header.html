@@ -1,6 +1,6 @@
 <header class="header">
   <!-- <h1>Filmoteka</h1> -->
-  <div class="header__nav">
+  <nav class="header__nav">
     <ul class="header-nav__list">
       <li class="header-nav__item">
         <a href="#" class="header-nav__link">
@@ -16,8 +16,16 @@
         <h2 class="header__nav__link">my library</h2>
       </li>
     </ul>
-  </div>
-  <div class="search__input">
-    <input class="header-input" />
+  </nav>
+  <div class="header__input">
+    <form class="d-flex" role="search">
+      <input
+        class="input__search"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn" type="submit">Search</button>
+    </form>
   </div>
 </header>
