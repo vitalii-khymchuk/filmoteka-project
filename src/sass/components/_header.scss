@@ -12,9 +12,36 @@
   color: aliceblue;
 }
 
-.search__input {
+.input__search {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: white;
 }
-.header__input {
+
+.search-form {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input__search::placeholder {
+  background: transparent;
+  color: cornsilk;
+}
+
+.input__search:hover,
+.input__search:focus {
+  outline: none;
+  border-bottom: yellow;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: whitesmoke;
+  position: absolute;
+  right: 840;
+  outline: none;
 }
