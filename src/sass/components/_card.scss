@@ -1,0 +1,24 @@
+.info {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 12px;
+    }
+    
+    .info-name {
+        
+        color: #000;
+        text-transform: uppercase;
+    }
+    
+    .info-year{
+      color: #FF6B08;
+      border-left: 2px solid #FF6B08;
+      padding-left: 4px;
+    }
+    
+    .info-genre{
+      color: #FF6B08;
+    }
