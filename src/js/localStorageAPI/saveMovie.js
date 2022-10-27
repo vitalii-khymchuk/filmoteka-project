@@ -1,5 +1,14 @@
+import movieData from '../../data/one.json';
+export { prepareMovieToSaving, getSavedMovies, removeEventListeners };
+
+const refs = {
+  btn1: document.querySelector('.btn1'),
+  btn2: document.querySelector('.btn2'),
+};
+
 let currentMovieData = {};
 
+//this function convert and save data to variable in correct format
 function prepareMovieToSaving(data) {
   const {
     adult,
@@ -38,47 +47,94 @@ function prepareMovieToSaving(data) {
   };
 
   addEvtListeners();
+  changeBtnName('watched');
+  changeBtnName('queue');
 }
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//this call other functions (that save or delete movie from local storage ),
+//depends on available this movie in loc storage
+function toggleMovie(libName) {
+  if (isMovieInStorage(libName)) {
+    deleteMovie(libName);
+    changeBtnName(libName);
+  } else {
+    saveMovie(libName);
+    changeBtnName(libName);
+  }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//check if current movie in storage by comparating id of all movies in loc storage with
+// id of movie that we are trying to save
+function isMovieInStorage(libName) {
+  const savedMovies = getSavedMovies(libName);
+  if (!savedMovies) {
+    localStorage.setItem(libName, '[]');
+    return false;
+  }
+  return savedMovies.some(e => e.id === currentMovieData.id);
+}
+//////////////////////////////////////////////////////////////////////////////////////
+
+//change btn name (foe example delete movie to add movie)
+function changeBtnName(libName) {
+  const partOfName = isMovieInStorage(libName) ? 'delete from ' : 'add to ';
+
+  switch (libName) {
+    case 'watched':
+      refs.btn1.textContent = (partOfName + libName).toUpperCase();
+      return;
+    case 'queue':
+      refs.btn2.textContent = (partOfName + libName).toUpperCase();
+      return;
+  }
+}
+//////////////////////////////////////////////////////////////////////////////////////
+
+//get data from local storage, add new movie and save new data
+function saveMovie(libName) {
+  const savedMovies = getSavedMovies(libName);
+  savedMovies.push(currentMovieData);
+  rewriteLocStorage(libName, savedMovies);
+  // makeMarkup(savedMovies);
+}
+//////////////////////////////////////////////////////////////////////////////
+
+//get data from local storage, delete movie and save new data
+function deleteMovie(libName) {
+  const savedMovies = getSavedMovies(libName);
+  const indexOfMovieToDelete = savedMovies.findIndex(
+    e => e.id === currentMovieData.id
+  );
+  savedMovies.splice(indexOfMovieToDelete, 1);
+  rewriteLocStorage(libName, savedMovies);
+  // makeMarkup(savedMovies);
+}
+///////////////////////////////////////////////////////////////////////////
+
+// get saved movie from local storage
+function getSavedMovies(libName) {
+  return JSON.parse(localStorage.getItem(libName));
+}
+////////////////////////////////////////////////////////////////
+
+//put new data to local storage
+function rewriteLocStorage(libName, data) {
+  localStorage.setItem(libName, JSON.stringify(data));
+}
+///////////////////////////////////////////////////////////////////////////
 
 function addEvtListeners() {
   refs.btn1.addEventListener('click', () => toggleMovie('watched'));
   refs.btn2.addEventListener('click', () => toggleMovie('queue'));
 }
 
-function toggleMovie(libName) {
-  if (isMovieInStorage(libName)) {
-    deleteMovie(libName);
-    changeBtn('add to ', libName);
-  } else {
-    saveMovie(libName);
-    changeBtn('delete from ', libName);
-  }
+function removeEventListeners() {
+  refs.btn1.replaceWith(refs.btn1.cloneNode(true));
+  refs.btn2.replaceWith(refs.btn2.cloneNode(true));
 }
 
-function isMovieInStorage(libName) {
-  localStorage.getItem(libName).some(e => e.id === currentMovieData.id);
-}
+prepareMovieToSaving(movieData);
 
-function changeBtn(btnText, libName) {
-  switch (libName) {
-    case 'watched':
-      refs.btn1.textContent = (btnText + libName).toUpperCase();
-    case 'queue':
-      refs.btn2.textContent = (btnText + libName).toUpperCase();
-  }
-}
-
-function saveMovie(libName) {
-  const savedMovies = JSON.parse(localStorage.getItem(libName));
-  const updSavedMovies = savedMovies.push(currentMovieData);
-  localStorage.setItem(libName, JSON.stringify(updSavedMovies));
-}
-
-function deleteMovie(libName) {
-  const savedMovies = JSON.parse(localStorage.getItem(libName));
-  const indexOfMovieToDelete = savedMovies.findIndex(
-    e => e.id === currentMovieData.id
-  );
-  const updSavedMovies = [...savedMovies].splice(indexOfMovieToDelete, 1);
-  localStorage.setItem(libName, JSON.stringify(updSavedMovies));
-}
+//test row special for Vlad
