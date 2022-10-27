@@ -1,0 +1,24 @@
+.header {
+  width: 100%;
+  height: 230px;
+  background-image: url('../images/header_mobile_1x.jpg');
+  background-repeat: repeat;
+}
+
+.header-nav__list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: aliceblue;
+}
+
+.search__input {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header__input {
+  opacity: 1;
+  background-image: url('../images/header_mobile_1x.jpg');
+}
