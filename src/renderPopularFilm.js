@@ -1,6 +1,9 @@
 import axios from 'axios';
+import * as genres from './data/genres.json';
 
-const refs = {};
+const refs = {
+  jsImageOnFilmCard: document.querySelectorAll('.js-image'),
+};
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/trending/movie';
 
@@ -42,8 +45,12 @@ async function getPopularFilms() {
   try {
     ///spinner
 
-    const data = await themovieApi.getFilms();
-    console.log(data);
+    const { results, page } = await themovieApi.getFilms();
+    console.log(results);
+
+    const parced = JSON.stringify(genres);
+    const genresFilm = JSON.parse(parced);
+    console.log(genresFilm);
   } catch (error) {
     console.log(error);
   }
