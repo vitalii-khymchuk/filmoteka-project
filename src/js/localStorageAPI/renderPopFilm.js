@@ -47,26 +47,21 @@ async function getPopularFilms() {
 
     const { results } = await themovieApi.getFilms();
 
-    //
+    //     //    //
     let imageCard = getAvailabilityImage(results);
 
+    //     //    //
     let title = results.map(item => {
       return item.title;
     });
 
-    /////////
-    let genresCardId = checkAndReturnGenres(results);
+    //     //    //
+    let releaseDate = sliceDateRelease(results);
 
-    ////жанр=имени
-
-    console.log(genresCardId);
-
-    console.log(genresFilmData);
+    ///////// жанры по имени  ////
+    let genresName = results.map(item => formateGenres(item.genre_ids));
 
     //
-
-    let releaseDate = sliceDateRelease(results);
-    ///
   } catch (error) {
     console.log(error);
   }
@@ -88,21 +83,18 @@ export function getAvailabilityImage(data) {
 }
 
 ///проверяет жанры если > 3  обрезает и добавляет Other
-export function checkAndReturnGenres(data) {
-  const genres = data.map(item => {
-    if (item.genre_ids.length > 3) {
-      item.genre_ids = item.genre_ids.slice(0, 4);
-    }
-    return item.genre_ids;
-  });
-
-  let genresOnCardFilter = genres.map(item => {
-    if (item.length > 3) {
-      item[3] = 'Other';
-    }
-    return item;
-  });
-  return genresOnCardFilter;
+export function formateGenres(genresCodeArray) {
+  const genresNames = genresCodeArray.map(convertGenre);
+  let slicedGenres = [...genresNames];
+  if (genresNames.length > 3) {
+    slicedGenres = slicedGenres.slice(0, 2);
+    slicedGenres.push('Other');
+  }
+  return slicedGenres;
+}
+function convertGenre(genreCode) {
+  const genreElement = genres.find(e => e.id == genreCode);
+  return genreElement.name;
 }
 
 /////////Обрезает дату релиза
