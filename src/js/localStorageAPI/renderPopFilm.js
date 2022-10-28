@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as genres from '/src/data/genres.json';
 import { createMarkupCard } from './markupCard';
+import * as placeholderPic from '../../images/coverPlaceholder.jpg';
 
 const refs = {
   listCardRef: document.querySelector('.card-set'),
@@ -69,7 +70,7 @@ getPopularFilms();
 export function getAvailabilityImage(data) {
   const image = [data].map(item => {
     if (item === null) {
-      item = '.src/images/coverPlaceholder.jpg';
+      item = placeholderPic;
     } else {
       item = `https://image.tmdb.org/t/p/w500/${item}`;
     }
