@@ -1,0 +1,33 @@
+{{#each this}}
+<li class="ac">
+    <h3 class="ac-header">
+        <button type="button" class="ac-trigger">
+            {{title}}
+        </button>
+    </h3>
+    <div class="ac-panel">
+        <table class="torrentTable">
+            <thead>
+                <tr>
+                    <th>Quality</th>
+                    <th>Size</th>
+                    <th>Peers</th>
+                    <th>Seeds</th>
+                    <th>Torrent file</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.torrents}}
+                <tr>
+                    <td>{{quality}}</td>
+                    <td>{{size}}</td>
+                    <td>{{peers}}</td>
+                    <td>{{seeds}}</td>
+                    <td><a class="torrentTable__btn" href={{url}}>Download</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</li>
+{{/each}}
