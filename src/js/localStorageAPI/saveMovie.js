@@ -144,4 +144,4 @@ function removeEventListeners() {
   refs.btn2.replaceWith(refs.btn2.cloneNode(true));
 }
 
-prepareMovieToSaving(movieData);
+// prepareMovieToSaving(movieData);
