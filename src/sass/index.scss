@@ -5,10 +5,15 @@
 @import './utils/mixines';
 @import './utils/vars';
 
-@import './layouts/footer';
+@import './components/container';
+@import './components/modal-film';
+@import './components/backdrop';
+@import './components/scrollbar';
 
 @import './components/container';
 @import './components/cardset';
 @import './components/pagination';
 
 @import './components/card';
+
+@import './layouts/footer';
