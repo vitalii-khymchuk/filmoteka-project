@@ -1,0 +1,50 @@
+.library-header {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+
+  text-align: center;
+  width: 100%;
+  height: 230px;
+
+  background-image: url('../images/library-header_mob_1x.jpg');
+  background-size: cover;
+
+  @include tab-only {
+    background-image: url('../images/library-header_tablet_1x.jpg');
+  }
+  @include pc-only {
+    background-image: url('../images/library-header_desktop_2x.jpg');
+    background-repeat: repeat;
+  }
+}
+
+.header-btn__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.header__btn {
+  width: 130px;
+  height: 44;
+  border-radius: 5px;
+  margin-right: 20px;
+  background-color: transparent;
+  color: azure;
+  text-transform: uppercase;
+  border: 1px solid white;
+}
+
+.header__btn:hover {
+  background-color: currentColor;
+}
+
+// .watched-btn {
+//   background-color: white;
+// }
+
+// .queue-btn {
+//   background-color: red;
+// }
