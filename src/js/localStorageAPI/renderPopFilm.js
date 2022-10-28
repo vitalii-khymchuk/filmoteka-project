@@ -1,7 +1,10 @@
 import axios from 'axios';
 import * as genres from '/src/data/genres.json';
+import { createMarkupCard } from './markupCard';
 
-const refs = {};
+const refs = {
+  listCardRef: document.querySelector('.card-set'),
+};
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/trending/movie';
 
@@ -9,7 +12,7 @@ export class ThemovieAPI {
   #api = 'c6849c57578619bd16dafe22e211e348';
   #total_pages = '';
   #total_results = '';
-  #page = 1;
+  #page = 4;
 
   async getFilms() {
     const urlAXIOS = `day?api_key=${this.#api}&page=${this.#page}`;
@@ -47,20 +50,13 @@ async function getPopularFilms() {
 
     const { results } = await themovieApi.getFilms();
 
-    //     //    //
-    let imageCard = getAvailabilityImage(results);
+    console.log(results);
 
-    //     //    //
-    let title = results.map(item => {
-      return item.title;
-    });
+    let newData = getActualData(results);
 
-    //     //    //
-    let releaseDate = sliceDateRelease(results);
+    let markup = createMarkupCard(newData);
 
-    ///////// жанры по имени  ////
-    let genresName = results.map(item => formateGenres(item.genre_ids));
-
+    renderCars(refs.listCardRef, markup);
     //
   } catch (error) {
     console.log(error);
@@ -71,13 +67,13 @@ getPopularFilms();
 
 //принимает result с бекенда и возвращает ссылки на превью фильмов (если нет то ставит заглушку)
 export function getAvailabilityImage(data) {
-  const image = data.map(item => {
-    if (item.backdrop_path === null) {
-      item.backdrop_path = './images/coverPlaceholder.jpg';
+  const image = [data].map(item => {
+    if (item === null) {
+      item = '.src/images/coverPlaceholder.jpg';
     } else {
-      item.backdrop_path = `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`;
+      item = `https://image.tmdb.org/t/p/w500/${item}`;
     }
-    return item.backdrop_path;
+    return item;
   });
   return image;
 }
@@ -99,7 +95,42 @@ function convertGenre(genreCode) {
 
 /////////Обрезает дату релиза
 export function sliceDateRelease(data) {
-  return data.map(item => {
-    return item.release_date.slice(0, 4);
+  return [data].map(item => {
+    return item.slice(0, 4);
   });
+}
+
+/////// получает данные с бека и собирает все вместе для рендера
+export function getActualData(results) {
+  return results.map(
+    ({
+      backdrop_path,
+      genre_ids,
+      release_date,
+      title,
+      vote_average,
+    } = results) => {
+      let newResult = {
+        backdrop_path: getAvailabilityImage(backdrop_path),
+        genre_ids: formateGenres(genre_ids),
+        release_date: sliceDateRelease(release_date),
+        title: title,
+        vote_average: vote_averageRound(vote_average),
+      };
+      return newResult;
+    }
+  );
+}
+
+//////округляет оценку
+export function vote_averageRound(vote_average) {
+  return [vote_average].map(item => {
+    return item.toFixed(1);
+  });
+}
+
+/////renderCards
+
+export function renderCars(referense, markup) {
+  referense.innerHTML = markup;
 }
