@@ -1,21 +1,26 @@
 import axios from 'axios';
 import * as genres from '/src/data/genres.json';
 import { createMarkupCard } from './markupCard';
+import * as placeholderPic from '../../images/coverPlaceholder.jpg';
 
 const refs = {
   listCardRef: document.querySelector('.card-set'),
 };
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/trending/movie';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 export class ThemovieAPI {
   #api = 'c6849c57578619bd16dafe22e211e348';
   #total_pages = '';
   #total_results = '';
-  #page = 4;
+  #page = 1;
+  #trending = 'trending';
+  #movie = 'movie';
 
   async getFilms() {
-    const urlAXIOS = `day?api_key=${this.#api}&page=${this.#page}`;
+    const urlAXIOS = `${this.#trending}/${this.#movie}/day?api_key=${
+      this.#api
+    }&page=${this.#page}`;
 
     const { data } = await axios.get(urlAXIOS);
 
@@ -50,8 +55,6 @@ async function getPopularFilms() {
 
     const { results } = await themovieApi.getFilms();
 
-    console.log(results);
-
     let newData = getActualData(results);
 
     let markup = createMarkupCard(newData);
@@ -69,7 +72,7 @@ getPopularFilms();
 export function getAvailabilityImage(data) {
   const image = [data].map(item => {
     if (item === null) {
-      item = '.src/images/coverPlaceholder.jpg';
+      item = placeholderPic;
     } else {
       item = `https://image.tmdb.org/t/p/w500/${item}`;
     }
@@ -90,6 +93,7 @@ export function formateGenres(genresCodeArray) {
 }
 function convertGenre(genreCode) {
   const genreElement = genres.find(e => e.id == genreCode);
+
   return genreElement.name;
 }
 
@@ -108,9 +112,11 @@ export function getActualData(results) {
       genre_ids,
       release_date,
       title,
+      id,
       vote_average,
     } = results) => {
       let newResult = {
+        id: id,
         backdrop_path: getAvailabilityImage(backdrop_path),
         genre_ids: formateGenres(genre_ids),
         release_date: sliceDateRelease(release_date),
