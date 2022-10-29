@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import movieData from '../../data/one.json';
 export { prepareMovieToSaving, getSavedMovies, removeEventListeners };
 
@@ -97,6 +98,9 @@ function saveMovie(libName) {
   const savedMovies = getSavedMovies(libName);
   savedMovies.push(currentMovieData);
   rewriteLocStorage(libName, savedMovies);
+  Notify.info(
+    `"${currentMovieData.original_title}" has added to your ${libName}`
+  );
   // makeMarkup(savedMovies);
 }
 //////////////////////////////////////////////////////////////////////////////
@@ -109,6 +113,9 @@ function deleteMovie(libName) {
   );
   savedMovies.splice(indexOfMovieToDelete, 1);
   rewriteLocStorage(libName, savedMovies);
+  Notify.info(
+    `"${currentMovieData.original_title}" has removed from your ${libName}`
+  );
   // makeMarkup(savedMovies);
 }
 ///////////////////////////////////////////////////////////////////////////
@@ -136,5 +143,3 @@ function removeEventListeners() {
 }
 
 prepareMovieToSaving(movieData);
-
-//test row special for Vlad

@@ -7,7 +7,7 @@
 }
 
 .footer__box {
-  @include tab-only {
+  @include tab-pc {
     display: flex;
     justify-content: center;
   }
