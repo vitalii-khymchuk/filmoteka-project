@@ -1,4 +1,5 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { makeQueryForTorrents } from '../torrentAPI/getTorrentLinks';
 import movieData from '../../data/one.json';
 export { prepareMovieToSaving, getSavedMovies, removeEventListeners };
 
@@ -47,9 +48,10 @@ function prepareMovieToSaving(data) {
     vote_count: vote_count,
   };
 
-  addEvtListeners();
-  changeBtnName('watched');
-  changeBtnName('queue');
+  // addEvtListeners();
+  // changeBtnName('watched');
+  // changeBtnName('queue');
+  makeQueryForTorrents(currentMovieData.original_title);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -142,4 +144,4 @@ function removeEventListeners() {
   refs.btn2.replaceWith(refs.btn2.cloneNode(true));
 }
 
-prepareMovieToSaving(movieData);
+// prepareMovieToSaving(movieData);

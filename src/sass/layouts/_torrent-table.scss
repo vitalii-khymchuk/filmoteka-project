@@ -1,0 +1,38 @@
+table.torrentTable {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #ff6b02;
+  border-style: solid;
+  color: #000000;
+}
+
+table.torrentTable td,
+table.torrentTable th {
+  border-width: 2px;
+  border-color: #ff6b02;
+  border-style: solid;
+  padding: 5px;
+}
+
+table.torrentTable thead {
+  background-color: #ff6b02;
+}
+
+.torrentTable__btn {
+  background-color: transparent;
+  border-radius: 6px;
+  border: 1px solid #000000;
+  display: inline-block;
+  cursor: pointer;
+  color: #000000;
+  padding: 2px 6px;
+
+  &:hover,
+  &:focus {
+    background-color: #ff6b02;
+    border: 1px solid #ff6b02;
+    color: #ffffff;
+  }
+}
