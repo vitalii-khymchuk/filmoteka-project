@@ -51,8 +51,6 @@ async function getPopularFilms() {
 
     const { results } = await themovieApi.getFilms();
 
-    console.log(results);
-
     let newData = getActualData(results);
 
     let markup = createMarkupCard(newData);
@@ -91,6 +89,7 @@ export function formateGenres(genresCodeArray) {
 }
 function convertGenre(genreCode) {
   const genreElement = genres.find(e => e.id == genreCode);
+
   return genreElement.name;
 }
 
@@ -109,9 +108,11 @@ export function getActualData(results) {
       genre_ids,
       release_date,
       title,
+      id,
       vote_average,
     } = results) => {
       let newResult = {
+        id: id,
         backdrop_path: getAvailabilityImage(backdrop_path),
         genre_ids: formateGenres(genre_ids),
         release_date: sliceDateRelease(release_date),
