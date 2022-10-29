@@ -9,42 +9,45 @@
 
   background-image: url('../images/library-header_mob_1x.jpg');
   background-size: cover;
+  @include retina {
+    background-image: url('../images/library-header_mob_2x.jpg');
+  }
 
   @include tab-only {
     background-image: url('../images/library-header_tablet_1x.jpg');
+    @include retina {
+      background-image: url('../images/library-header_tablet_2x.jpg');
+    }
   }
   @include pc-only {
-    background-image: url('../images/library-header_desktop_2x.jpg');
-    background-repeat: repeat;
+    background-image: url('../images/library-header_desktop_1x.jpg');
+    @include retina {
+      background-image: url('../images/library-header_desktop_2x.jpg');
+    }
   }
 }
 
-.header-btn__list {
+.library-header__btn-list {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 60px;
 }
 
-.header__btn {
+.library-header__btn {
+  cursor: pointer;
   width: 130px;
   height: 44;
   border-radius: 5px;
   margin-right: 20px;
   background-color: transparent;
-  color: azure;
+  color: $secondaryTextColor;
   text-transform: uppercase;
-  border: 1px solid white;
+  border: 1px solid $secondaryTextColor;
+  &:hover,
+  &:focus {
+    background-color: $accentColor;
+    color: $secondaryTextColor;
+    border: 1px solid $accentColor;
+  }
 }
-
-.header__btn:hover {
-  background-color: currentColor;
-}
-
-// .watched-btn {
-//   background-color: white;
-// }
-
-// .queue-btn {
-//   background-color: red;
-// }

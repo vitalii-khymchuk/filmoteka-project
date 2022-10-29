@@ -5,15 +5,24 @@
   text-align: center;
   width: 100%;
   height: 230px;
-  background-image: url('../images/header_mobile_1x.jpg');
   background-size: cover;
+  background-image: url('../images/header_mobile_1x.jpg');
+  @include retina {
+    background-image: url('../images/header_mobile_2x.jpg');
+  }
 
   @include tab-only {
     background-image: url('../images/header_tablet_1x.jpg');
+    @include retina {
+      background-image: url('../images/header_tablet_2x.jpg');
+    }
   }
   @include pc-only {
-    background-image: url('../images/header_desktop_2x.jpg');
+    background-image: url('../images/header_desktop_1x.jpg');
     background-repeat: repeat;
+    @include retina {
+      background-image: url('../images/header_desktop_2x.jpg');
+    }
   }
 }
 
@@ -30,14 +39,26 @@
 
 .header-nav__link {
   display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.current::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-color: $accentColor;
 }
 
 .header-nav__list {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: $secondaryTextColor;
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .header-nav__item {
@@ -49,12 +70,19 @@
   justify-content: center;
   align-items: center;
   background: transparent;
-  color: white;
+  color: $secondaryTextColor;
   height: 20px;
+  width: 280px;
   margin-top: 60px;
   outline: unset;
   border: none;
-  border-bottom: 0.7 solid white;
+  border-bottom: 0.7 solid $secondaryTextColor;
+  @include tab-only {
+    width: 336px;
+  }
+  @include pc-only {
+    width: 394px;
+  }
 }
 
 .search-form {
@@ -65,7 +93,7 @@
 
 .search-input::placeholder {
   background: transparent;
-  color: white;
+  color: $secondaryTextColor;
   outline: none;
 }
 
@@ -77,22 +105,20 @@
 .btn-search {
   background: transparent;
   border: none;
-  color: white;
+  color: $secondaryTextColor;
   outline: none;
   margin-top: 60px;
   position: relative;
   left: -18px;
 }
 
-.current::after {
-  content: '';
-  border-bottom: 3px currentColor;
-}
-
 .heading {
   @include mob-only {
     display: none;
   }
-  color: white;
+  color: $secondaryTextColor;
   margin-left: 12px;
+  font-size: 30px;
+  line-height: 35.56px;
+  font-weight: 500;
 }
