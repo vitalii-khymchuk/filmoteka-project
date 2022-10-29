@@ -1,12 +1,14 @@
 import cardTpl from '../templates/cardTpl.hbs';
 import pictureExample from '../images/coverPlaceholder.jpg';
 
+const listCardsRef = document.querySelector('.card-set');
+
 export function createMarkupCard (results) {
     if(!results[0]) {
-      element.innerHtml = `<img src="${pictureExample}" alt="movie not found"/>`;
+        listCardsRef.innerHtml = `<img src=${pictureExample} alt="movie not found"/>`;
 
     } else {
-        element.innerHtml = cardTpl(results);
+        listCardsRef.innerHtml = cardTpl(results);
 
     }
     
