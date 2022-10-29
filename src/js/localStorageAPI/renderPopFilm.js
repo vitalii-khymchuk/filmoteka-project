@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as genres from '/src/data/genres.json';
-import { createMarkupCard } from './markupCard';
+import { createMarkupCard } from '../markupCard';
 import * as placeholderPic from '../../images/coverPlaceholder.jpg';
 
 const refs = {
@@ -137,6 +137,6 @@ export function vote_averageRound(vote_average) {
 
 /////renderCards
 
-export function renderCars(referense, markup) {
-  referense.innerHTML = markup;
+export function renderCars(markup) {
+  refs.listCardRef.innerHTML = markup;
 }
