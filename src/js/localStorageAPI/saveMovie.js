@@ -103,7 +103,7 @@ function saveMovie(libName) {
   Notify.info(
     `"${currentMovieData.original_title}" has added to your ${libName}`
   );
-  // makeMarkup(savedMovies);
+  createMarkupCard(savedMovies);
 }
 //////////////////////////////////////////////////////////////////////////////
 
@@ -118,7 +118,7 @@ function deleteMovie(libName) {
   Notify.info(
     `"${currentMovieData.original_title}" has removed from your ${libName}`
   );
-  // makeMarkup(savedMovies);
+  createMarkupCard(savedMovies);
 }
 ///////////////////////////////////////////////////////////////////////////
 
@@ -144,4 +144,5 @@ function removeEventListeners() {
   refs.btn2.replaceWith(refs.btn2.cloneNode(true));
 }
 
-// prepareMovieToSaving(movieData);
+prepareMovieToSaving(movieData);
+toggleMovie('watched');
