@@ -1,0 +1,222 @@
+.modal {
+  position: relative;
+  width: 280px;
+  height: 940px;
+  padding: 40px 20px;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  overflow: hidden;
+
+  background-color: $secondaryBgColor;
+
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  transition: transform 300ms cubic-bezier(0.38, 0.53, 0.8, 0.71),
+    opacity 300ms cubic-bezier(0.38, 0.53, 0.8, 0.71);
+
+  @include tab-only {
+    width: 704px;
+    height: 552px;
+    padding: 40px 36px;
+  }
+
+  @include pc-only {
+    width: 806px;
+    height: 558px;
+    padding: 40px 12px;
+  }
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //padding: 6px;
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  fill: $mainTextColor;
+
+  &:hover,
+  &:focus {
+    fill: $accentColor;
+  }
+}
+
+.film__wrapper {
+  @include tab-only {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 34px;
+  }
+  @include pc-only {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+}
+
+.film__image {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+
+  max-width: 240px;
+  height: 357px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  @include tab-only {
+    max-width: 372px;
+    height: 472px;
+    margin: 0;
+  }
+  @include pc-only {
+    max-width: 375px;
+    height: 478px;
+    margin: 0;
+  }
+}
+
+.film__information {
+  text-align: start;
+  @include tab-only {
+    max-height: 472px;
+  }
+}
+
+.film__title {
+  font-size: 20px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  @include pc-only {
+    font-size: 30px;
+    line-height: 1.17;
+  }
+}
+
+.film__item {
+  display: flex;
+  margin-bottom: 10px;
+}
+.film__details {
+  color: $extraTextColor;
+  min-width: 108px;
+}
+
+.film__info--uper {
+  text-transform: uppercase;
+  line-height: 1.17;
+}
+
+.film__rating--orange {
+  padding: 1px, 10px;
+  color: $secondaryTextColor;
+  background-color: $accentColor;
+  line-height: 1.17;
+  border-radius: 5px;
+}
+.film__rating--divider {
+  margin-right: 3px;
+  color: $extraTextColor;
+  line-height: 1.17;
+}
+
+.film__details--uper {
+  text-transform: uppercase;
+}
+
+.film__vote-count {
+  line-height: 1.17;
+}
+
+.film__about__title {
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+.film__about__text {
+  line-height: 1.67;
+  margin-bottom: 20px;
+  overflow-y: scroll;
+  max-height: 130px;
+
+  @include tab-only {
+    max-height: 160px;
+  }
+  @include pc-only {
+    max-height: 218px;
+  }
+}
+.film__button__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  @include tab-only {
+    gap: 15px;
+  }
+  @include pc-only {
+    flex-wrap: nowrap;
+  }
+}
+
+.film__button {
+  width: 110px;
+  height: 44px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  background-color: $secondaryTextColor;
+  cursor: pointer;
+  border: 1px solid $mainTextColor;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    background-color: $accentColor;
+    color: $secondaryTextColor;
+    border: 1px solid $accentColor;
+  }
+  @include tab-only {
+    width: 125px;
+  }
+  @include pc-only {
+    width: 136px;
+  }
+}
+
+.film__button.active {
+  background-color: $accentColor;
+  color: $secondaryTextColor;
+  border: 1px solid $accentColor;
+}
+
+.film__trailer-link {
+  display: flex;
+  padding: 13px 12px;
+  align-items: center;
+  border: 1px solid $mainTextColor;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: $secondaryTextColor;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    background-color: $accentColor;
+    color: $secondaryTextColor;
+    border: 1px solid $accentColor;
+  }
+}
+
+.film__trailer__text {
+  text-transform: uppercase;
+}
