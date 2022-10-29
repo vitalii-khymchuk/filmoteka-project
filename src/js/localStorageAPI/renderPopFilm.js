@@ -7,16 +7,20 @@ const refs = {
   listCardRef: document.querySelector('.card-set'),
 };
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/trending/movie';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 export class ThemovieAPI {
   #api = 'c6849c57578619bd16dafe22e211e348';
   #total_pages = '';
   #total_results = '';
-  #page = 4;
+  #page = 1;
+  #trending = 'trending';
+  #movie = 'movie';
 
   async getFilms() {
-    const urlAXIOS = `day?api_key=${this.#api}&page=${this.#page}`;
+    const urlAXIOS = `${this.#trending}/${this.#movie}/day?api_key=${
+      this.#api
+    }&page=${this.#page}`;
 
     const { data } = await axios.get(urlAXIOS);
 
