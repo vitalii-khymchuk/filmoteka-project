@@ -13,8 +13,8 @@
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
 
-  transition: transform 300ms cubic-bezier(0.38, 0.53, 0.8, 0.71),
-    opacity 300ms cubic-bezier(0.38, 0.53, 0.8, 0.71);
+  transition: transform 250ms cubic-bezier(0.38, 0.53, 0.8, 0.71),
+    opacity 250ms cubic-bezier(0.38, 0.53, 0.8, 0.71);
 
   @include tab-only {
     width: 704px;
@@ -178,7 +178,7 @@
   background-color: $secondaryTextColor;
   cursor: pointer;
   border: 1px solid $mainTextColor;
-  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     background-color: $accentColor;
@@ -208,7 +208,7 @@
   cursor: pointer;
   text-transform: uppercase;
   background-color: $secondaryTextColor;
-  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     background-color: $accentColor;
