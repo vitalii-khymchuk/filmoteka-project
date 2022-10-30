@@ -11,7 +11,7 @@ const API_KEY = 'c6849c57578619bd16dafe22e211e348';
 export async function searchMovieByName(name, page) {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=c6849c57578619bd16dafe22e211e348&language=en-US&query=${name}&page=${page}&include_adult=false`
+      `search/movie?api_key=${API_KEY}&language=en-US&query=${name}&page=${page}&include_adult=false`
     );
     return response.data.results;
   } catch (error) {
