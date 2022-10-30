@@ -18,7 +18,6 @@ async function onFilmCardClick(event) {
 
     const MovieId = event.target.closest('li').dataset.id;
     const results = await fetchMovieById(MovieId);
-    console.log([results]);
     const newResults = getActualData([results]);
 
     refs.modal.innerHTML = modalFilmTpl(newResults[0]);
