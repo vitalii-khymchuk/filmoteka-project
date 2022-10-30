@@ -1,11 +1,8 @@
 import cardTpl from '../templates/cardTpl.hbs';
 import * as genres from '/src/data/genres.json';
 import pictureExample from '../images/coverPlaceholder.jpg';
+import { refs } from './refs';
 // import * as placeholderPic from '../../images/coverPlaceholder.jpg';
-
-const refs = {
-  listCards: document.querySelector('.card-set'),
-};
 
 //принимает result с бекенда и возвращает ссылки на превью фильмов (если нет то ставит заглушку)
 export function getAvailabilityImage(data) {
@@ -45,6 +42,7 @@ export function sliceDateRelease(data) {
 
 /////// получает данные с бека и собирает все вместе для рендера
 export function getActualData(results) {
+  console.log(results);
   return results.map(
     ({
       poster_path,
@@ -53,6 +51,7 @@ export function getActualData(results) {
       title,
       id,
       vote_average,
+      overview,
     } = results) => {
       let newResult = {
         id: id,
@@ -61,6 +60,7 @@ export function getActualData(results) {
         release_date: sliceDateRelease(release_date),
         title: title,
         vote_average: vote_averageRound(vote_average),
+        overview: overview,
       };
       return newResult;
     }
@@ -76,9 +76,9 @@ export function vote_averageRound(vote_average) {
 
 export function createMarkupCard(results) {
   if (!results[0]) {
-    refs.listCards.innerHTML = `<img src=${pictureExample} alt="movie not found"/>`;
+    refs.movieCards.innerHTML = `<img src=${pictureExample} alt="movie not found"/>`;
   } else {
-    refs.listCards.innerHTML = cardTpl(results);
+    refs.movieCards.innerHTML = cardTpl(results);
   }
 }
 
