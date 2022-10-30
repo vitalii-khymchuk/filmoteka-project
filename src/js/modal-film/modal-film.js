@@ -1,29 +1,35 @@
 import modalFilmTpl from '../../templates/mod-film.hbs';
-import renderOneFilm from '../../data/one.json';
-import { getInfoAboutFilm } from '../localStorageAPI/renderModalFilm';
-console.log(modalFilmTpl(renderOneFilm));
+import { fetchMovieById } from '../localStorageAPI/render-modal-film';
 
 const refs = {
-  openModalBtn: document.querySelector('[data-modal-open]'),
+  openModalBtn: document.querySelector('.film-card'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
   modal: document.querySelector('.js-modal'),
 };
 
-async function onFilmCardClick(event) {
-  try {
 
-    if (event.target.nodeName === 'UL') {
-       return;
+
+async function onFilmCardClick(event) {
+  const { target } = event;
+  console.log(target);
+  try {
+    if(target.nodeName === 'UL') {
+      return;
     }
-    toggleModal()
+
+    toggleModal();
+    document.addEventListener('keydown', keyBoardPress);
+    //document.body.style.overflow = 'scroll';
+    closeBtnClick()
     keyBoardPress()
     onBackdropClick()
 
-    const MovieId = event.target.closest('li').dataset.id;
-    //const film = await MovieId.fetchMovieById();
-      refs.modal.insertAdjacentHTML('afterbegin', makeFilmModalMarkup(film));
-    
+    const MovieId = target.closest('li').dataset.id;
+    //console.log(MovieId);
+    const { results } = await MovieId.fetchMovieById();
+    refs.modal.insertAdjacentHTML('afterbegin', modalFilmTpl(results));
+
 /*     const watchedModalBtn = document.querySelector('.js-watch');
     const queueModalBtn = document.querySelector('.js-queue');
     const youtubeBtn = document.querySelector('.js-trailer');
@@ -31,13 +37,14 @@ async function onFilmCardClick(event) {
     watchedModalBtn.addEventListener('click', onWatchedModalBtnClick);
     queueModalBtn.addEventListener('click', onQueueModalBtnClick);
     youtubeBtn.addEventListener('click', onTrailerBtnClick); */
+  } catch (error) {
+    console.log(error);
+  }
 
-}
-
-function openBtnClick() {
+/* function openBtnClick() {
   toggleModal();
   document.addEventListener('keydown', keyBoardPress);
-}
+} */
 function closeBtnClick() {
   toggleModal();
   document.removeEventListener('keydown', keyBoardPress);
@@ -54,8 +61,8 @@ function onBackdropClick(event) {
     closeBtnClick();
   }
 }
-
-refs.openModalBtn.addEventListener('click', openBtnClick);
+  
+refs.openModalBtn.addEventListener('click', onFilmCardClick);
 refs.closeModalBtn.addEventListener('click', closeBtnClick);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
