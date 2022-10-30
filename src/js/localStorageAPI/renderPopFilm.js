@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as genres from '/src/data/genres.json';
-import { createMarkupCard } from './markupCard';
+import { createMarkupCard } from '../markupCard';
 import * as placeholderPic from '../../images/coverPlaceholder.jpg';
 
 const refs = {
@@ -57,9 +57,8 @@ async function getPopularFilms() {
 
     let newData = getActualData(results);
 
-    let markup = createMarkupCard(newData);
+    createMarkupCard(newData);
 
-    renderCars(refs.listCardRef, markup);
     //
   } catch (error) {
     console.log(error);
