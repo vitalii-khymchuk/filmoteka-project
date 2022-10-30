@@ -9,6 +9,4 @@ export function createMarkupCard(results) {
   } else {
     listCardsRef.innerHTML = cardTpl(results);
   }
-
-  console.log(listCardsRef);
 }

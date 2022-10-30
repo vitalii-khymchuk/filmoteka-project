@@ -2,45 +2,43 @@ import modalFilmTpl from '../../templates/mod-film.hbs';
 import { fetchMovieById } from '../localStorageAPI/render-modal-film';
 
 const refs = {
-  openModalBtn: document.querySelector('.film-card'),
+  movieCards: document.querySelector('.card-set'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
   modal: document.querySelector('.js-modal'),
 };
 
-
-
 function onFilmCardClick(event) {
   try {
     if (!event.target.closest('.film-card')) {
-      console.log(event);
       return;
     }
-    
+
     event.preventDefault();
 
     toggleModal();
     document.addEventListener('keydown', keyBoardPress);
     //document.body.style.overflow = 'scroll';
-    closeBtnClick()
-    keyBoardPress()
-    onBackdropClick()
+    closeBtnClick();
+    keyBoardPress();
+    onBackdropClick();
 
     const MovieId = event.target.closest('li').dataset.id;
     //console.log(MovieId);
     const { results } = MovieId.fetchMovieById();
     refs.modal.insertAdjacentHTML('afterbegin', modalFilmTpl(results));
 
-/*     const watchedModalBtn = document.querySelector('.js-watch');
-    const queueModalBtn = document.querySelector('.js-queue');
-    const youtubeBtn = document.querySelector('.js-trailer');
-
-    watchedModalBtn.addEventListener('click', onWatchedModalBtnClick);
-    queueModalBtn.addEventListener('click', onQueueModalBtnClick);
-    youtubeBtn.addEventListener('click', onTrailerBtnClick); */
+    /*     const watchedModalBtn = document.querySelector('.js-watch');
+        const queueModalBtn = document.querySelector('.js-queue');
+        const youtubeBtn = document.querySelector('.js-trailer');
+    
+        watchedModalBtn.addEventListener('click', onWatchedModalBtnClick);
+        queueModalBtn.addEventListener('click', onQueueModalBtnClick);
+        youtubeBtn.addEventListener('click', onTrailerBtnClick); */
   } catch (error) {
     console.log(error);
   }
+}
 
 /* function openBtnClick() {
   toggleModal();
@@ -62,8 +60,8 @@ function onBackdropClick(event) {
     closeBtnClick();
   }
 }
-  
-refs.openModalBtn.addEventListener('click', onFilmCardClick);
+
+refs.movieCards.addEventListener('click', onFilmCardClick);
 refs.closeModalBtn.addEventListener('click', closeBtnClick);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
