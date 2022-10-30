@@ -57,9 +57,10 @@ async function getPopularFilms() {
 
     let newData = getActualData(results);
 
-    let markup = createMarkupCard(newData);
+    // let markup = createMarkupCard(newData);
 
-    renderCars(refs.listCardRef, markup);
+    createMarkupCard(newData);
+
     //
   } catch (error) {
     console.log(error);
@@ -137,6 +138,6 @@ export function vote_averageRound(vote_average) {
 
 /////renderCards
 
-export function renderCars(markup) {
-  refs.listCardRef.innerHTML = markup;
-}
+// export function renderCars(markup) {
+//   refs.listCardRef.innerHTML = markup;
+// }
