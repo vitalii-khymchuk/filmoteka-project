@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { getSavedMovies } from './saveMovie';
-import { createMarkupCard } from '../markupCard';
+import { createAndRenderMarkup } from '../markupCard';
 
 const refs = {
   watchedBtn: document.querySelector('.watchedBtn'),
@@ -36,7 +36,6 @@ function renderSavedMovies(libName) {
     Notify.info(`You have'nt added any movies to ${libName}`);
     return;
   }
-  createMarkupCard(data);
-  console.log(data);
+  createAndRenderMarkup(data);
 }
 /////////////////////////////////////////////////////////
