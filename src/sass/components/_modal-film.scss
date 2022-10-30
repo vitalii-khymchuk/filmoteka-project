@@ -1,7 +1,7 @@
 .modal {
   position: relative;
   width: 280px;
-  height: 940px;
+  height: 1028px;
   padding: 40px 20px;
   top: 20px;
   left: 50%;
@@ -18,13 +18,13 @@
 
   @include tab-only {
     width: 704px;
-    height: 552px;
+    height: 605px;
     padding: 40px 36px;
   }
 
   @include pc-only {
     width: 806px;
-    height: 558px;
+    height: 615px;
     padding: 40px 12px;
   }
 }
@@ -118,11 +118,11 @@
 }
 
 .film__rating--orange {
-  padding: 1px, 10px;
   color: $secondaryTextColor;
   background-color: $accentColor;
   line-height: 1.17;
   border-radius: 5px;
+  padding: 1px 10px;
 }
 .film__rating--divider {
   margin-right: 3px;
@@ -159,7 +159,7 @@
 .film__button__wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
 
   @include tab-only {
     gap: 15px;
