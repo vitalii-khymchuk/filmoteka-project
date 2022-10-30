@@ -3,3 +3,4 @@ import './js/pagination';
 import './js/localStorageAPI/renderPopFilm';
 import './js/footer-modal';
 import './js/trailer/trailer';
+import './js/searchMovieByName';
