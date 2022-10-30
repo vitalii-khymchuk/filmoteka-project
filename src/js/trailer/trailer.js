@@ -1,9 +1,7 @@
-import { Spinner } from 'spin.js';
+import { spinnerPlay, spinnerStop } from '../spinner';
 import YouTubePlayer from 'youtube-player';
 import { getTrailer } from './getTrailerAPI';
 // import { refs } from './refs';
-
-// const spinner = new Spinner(opts).spin(refs.spinner);
 
 //позже перенесу в общие когда кнопку прикрутим
 const refs = {
@@ -14,9 +12,20 @@ const refs = {
 };
 
 // нужна переменная для получения movieId открытого фильма
-let movieId = 436270;
+let movieId = 852046;
 
 let player;
+//Функция инициализации
+//Функция убрать листенер
+refs.trailerBtn.addEventListener('click', onOpenTrailer);
+
+function onOpenTrailer() {
+  spinnerPlay();
+  refs.body.classList.toggle('no-scroll');
+  refs.backdrop.classList.toggle('is-hidden');
+  // refs.backdropFilm.classList.toggle('is-hidden');
+  onFetchTrailer();
+}
 
 async function onFetchTrailer() {
   try {
@@ -25,29 +34,16 @@ async function onFetchTrailer() {
     } = await getTrailer(movieId);
 
     for (let i = 0; i < results.length; i += 1) {
-      if (
-        results[i].type.toLowerCase().includes('trailer') ||
-        results[i].type.toLowerCase().includes('teaser')
-      ) {
+      if (results[i].type.toLowerCase().includes('trailer')) {
         onLoadPlayer(results[i].key);
+        break;
       }
-      continue;
     }
   } catch (error) {
     console.log(error);
   } finally {
-    // spinnerStop();
+    spinnerStop();
   }
-}
-
-refs.trailerBtn.addEventListener('click', onSearchTrailer);
-
-function onSearchTrailer() {
-  // spinnerStart();
-  refs.body.classList.toggle('no-scroll');
-  refs.backdrop.classList.toggle('is-hidden');
-  // refs.backdropFilm.classList.toggle('is-hidden');
-  onFetchTrailer();
 }
 
 refs.backdrop.addEventListener('click', onCloseTrailer);
@@ -61,7 +57,7 @@ function onCloseTrailer(event) {
 }
 
 function onLoadPlayer(data) {
-  player = YouTubePlayer('video-player', {
+  player = new YouTubePlayer('video-player', {
     videoId: data,
   });
   player.playVideo();
@@ -69,4 +65,6 @@ function onLoadPlayer(data) {
 
 function stopVideo() {
   player.stopVideo();
+  refs.backdrop.innerHTML =
+    '<div class="video-trailer" id="video-player"></div>';
 }
