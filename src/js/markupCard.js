@@ -1,11 +1,8 @@
 import cardTpl from '../templates/cardTpl.hbs';
 import * as genres from '/src/data/genres.json';
 import pictureExample from '../images/coverPlaceholder.jpg';
+import { refs } from './refs';
 // import * as placeholderPic from '../../images/coverPlaceholder.jpg';
-
-const refs = {
-  listCards: document.querySelector('.card-set'),
-};
 
 //принимает result с бекенда и возвращает ссылки на превью фильмов (если нет то ставит заглушку)
 export function getAvailabilityImage(data) {
@@ -76,9 +73,9 @@ export function vote_averageRound(vote_average) {
 
 export function createMarkupCard(results) {
   if (!results[0]) {
-    refs.listCards.innerHTML = `<img src=${pictureExample} alt="movie not found"/>`;
+    refs.movieCards.innerHTML = `<img src=${pictureExample} alt="movie not found"/>`;
   } else {
-    refs.listCards.innerHTML = cardTpl(results);
+    refs.movieCards.innerHTML = cardTpl(results);
   }
 }
 
