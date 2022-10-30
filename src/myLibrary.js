@@ -2,6 +2,7 @@ import { refs } from './js/refs';
 import { getSavedMovies } from './js/localStorageAPI/saveMovie';
 import { createAndRenderMarkup } from './js/markupCard';
 import { initModal } from './js/modal-film/modal-film';
+import './js/advBlock';
 
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);
