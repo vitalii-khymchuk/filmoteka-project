@@ -42,6 +42,7 @@ export function sliceDateRelease(data) {
 
 /////// получает данные с бека и собирает все вместе для рендера
 export function getActualData(results) {
+  console.log(results);
   return results.map(
     ({
       poster_path,
@@ -50,6 +51,7 @@ export function getActualData(results) {
       title,
       id,
       vote_average,
+      overview,
     } = results) => {
       let newResult = {
         id: id,
@@ -58,6 +60,7 @@ export function getActualData(results) {
         release_date: sliceDateRelease(release_date),
         title: title,
         vote_average: vote_averageRound(vote_average),
+        overview: overview,
       };
       return newResult;
     }

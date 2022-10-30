@@ -2,6 +2,7 @@ import modalFilmTpl from '../../templates/mod-film.hbs';
 import { fetchMovieById } from '../localStorageAPI/render-modal-film';
 import { prepareMovieToSaving } from '../localStorageAPI/saveMovie';
 import { refs } from '../refs';
+import { getActualData } from '../markupCard';
 
 async function onFilmCardClick(event) {
   try {
@@ -13,12 +14,15 @@ async function onFilmCardClick(event) {
 
     toggleModal();
     document.addEventListener('keydown', keyBoardPress);
-    //document.body.style.overflow = 'scroll';
+    onScrollHidden();
 
     const MovieId = event.target.closest('li').dataset.id;
     const results = await fetchMovieById(MovieId);
-    refs.modal.insertAdjacentHTML('afterbegin', modalFilmTpl(results));
-    prepareMovieToSaving(results);
+    console.log([results]);
+    const newResults = getActualData([results]);
+
+    refs.modal.innerHTML = modalFilmTpl(newResults[0]);
+    prepareMovieToSaving(newResults[0]);
 
     /*     const watchedModalBtn = document.querySelector('.js-watch');
         const queueModalBtn = document.querySelector('.js-queue');
@@ -39,17 +43,20 @@ async function onFilmCardClick(event) {
 function closeBtnClick() {
   toggleModal();
   document.removeEventListener('keydown', keyBoardPress);
+  onScroll();
 }
 
 function keyBoardPress(event) {
   if (event.key === 'Escape') {
     closeBtnClick();
+    onScroll();
   }
 }
 
 function onBackdropClick(event) {
   if (event.target === event.currentTarget) {
     closeBtnClick();
+    onScroll();
   }
 }
 
@@ -61,4 +68,12 @@ export function initModal() {
 
 function toggleModal() {
   refs.backdrop.classList.toggle('is-hidden');
+}
+
+function onScroll() {
+  document.body.style.overflow = 'scroll';
+}
+
+function onScrollHidden() {
+  document.body.style.overflow = 'hidden';
 }
