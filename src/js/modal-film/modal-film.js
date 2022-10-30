@@ -18,11 +18,12 @@ async function onFilmCardClick(event) {
 
     const MovieId = event.target.closest('li').dataset.id;
     const results = await fetchMovieById(MovieId);
-    console.log([results]);
-    const newResults = getActualData([results]);
+    const transform = objTransformInArr(results);
+    console.log(transform);
+    const newResults = getActualData(transform);
 
-    refs.modal.innerHTML = modalFilmTpl(newResults[0]);
-    prepareMovieToSaving(newResults[0]);
+    refs.modal.innerHTML = modalFilmTpl(newResults);
+    prepareMovieToSaving(newResults);
 
     /*     const watchedModalBtn = document.querySelector('.js-watch');
         const queueModalBtn = document.querySelector('.js-queue');
@@ -34,6 +35,13 @@ async function onFilmCardClick(event) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function objTransformInArr(results) {
+  newResultsArr = Object.entries(results);
+  newResultsArr.forEach(([key, value]) => {
+    console.table(key, value);
+  });
 }
 
 /* function openBtnClick() {

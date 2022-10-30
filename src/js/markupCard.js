@@ -45,7 +45,6 @@ export function sliceDateRelease(data) {
 
 /////// получает данные с бека и собирает все вместе для рендера
 export function getActualData(results) {
-  console.log(results);
   return results.map(
     ({
       poster_path,

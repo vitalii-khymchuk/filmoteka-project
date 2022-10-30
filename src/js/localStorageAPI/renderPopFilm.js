@@ -59,7 +59,7 @@ async function getPopularFilms() {
     const genresFilmData = JSON.parse(parced);
 
     const { results } = await themovieApi.getFilms();
-    console.log(results);
+    //console.log(results);
 
     createAndRenderMarkup(results);
 
