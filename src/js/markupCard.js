@@ -1,11 +1,8 @@
 import cardTpl from '../templates/cardTpl.hbs';
 import * as genres from '/src/data/genres.json';
 import pictureExample from '../images/coverPlaceholder.jpg';
+import { refs } from './refs';
 // import * as placeholderPic from '../../images/coverPlaceholder.jpg';
-
-const refs = {
-  listCards: document.querySelector('.card-set'),
-};
 
 //принимает result с бекенда и возвращает ссылки на превью фильмов (если нет то ставит заглушку)
 export function getAvailabilityImage(data) {
@@ -21,8 +18,10 @@ export function getAvailabilityImage(data) {
 }
 
 ///проверяет жанры если > 3  обрезает и добавляет Other
-export function formateGenres(genresCodeArray) {
-  const genresNames = genresCodeArray.map(convertGenre);
+export function formateGenres(genresCodeArray, genresObjectArray) {
+  const genresNames = genresCodeArray
+    ? genresCodeArray.map(convertGenre)
+    : genresObjectArray.map(e => e.name);
   let slicedGenres = [...genresNames];
   if (genresNames.length > 3) {
     slicedGenres = slicedGenres.slice(0, 2);
@@ -49,6 +48,7 @@ export function getActualData(results) {
     ({
       poster_path,
       genre_ids,
+      genres,
       release_date,
       title,
       id,
@@ -58,7 +58,7 @@ export function getActualData(results) {
       let newResult = {
         id: id,
         poster_path: getAvailabilityImage(poster_path),
-        genre_ids: formateGenres(genre_ids),
+        genre_ids: formateGenres(genre_ids, genres),
         release_date: sliceDateRelease(release_date),
         title: title,
         vote_average: vote_averageRound(vote_average),
@@ -78,9 +78,9 @@ export function vote_averageRound(vote_average) {
 
 export function createMarkupCard(results) {
   if (!results[0]) {
-    refs.listCards.innerHTML = `<img src=${pictureExample} alt="movie not found"/>`;
+    refs.movieCards.innerHTML = `<img src=${pictureExample} alt="movie not found"/>`;
   } else {
-    refs.listCards.innerHTML = cardTpl(results);
+    refs.movieCards.innerHTML = cardTpl(results);
   }
 }
 

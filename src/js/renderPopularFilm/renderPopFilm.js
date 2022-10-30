@@ -1,23 +1,13 @@
 import axios from 'axios';
 import * as genres from '/src/data/genres.json';
-import {
-  createMarkupCard,
-  getActualData,
-  createAndRenderMarkup,
-} from '../markupCard';
+import { createAndRenderMarkup } from '../markupCard';
 
 import { spinnerPlay, spinnerStop } from '../spinner';
-
-const refs = {
-  listCardRef: document.querySelector('.card-set'),
-};
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 export class ThemovieAPI {
   #api = 'c6849c57578619bd16dafe22e211e348';
-  #total_pages = '';
-  #total_results = '';
   #page = 1;
   #trending = 'trending';
   #movie = 'movie';
@@ -59,7 +49,6 @@ async function getPopularFilms() {
     const genresFilmData = JSON.parse(parced);
 
     const { results } = await themovieApi.getFilms();
-    //console.log(results);
 
     createAndRenderMarkup(results);
 

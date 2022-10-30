@@ -18,9 +18,7 @@ async function onFilmCardClick(event) {
 
     const MovieId = event.target.closest('li').dataset.id;
     const results = await fetchMovieById(MovieId);
-    const transform = objTransformInArr(results);
-    console.log(transform);
-    const newResults = getActualData(transform);
+    const newResults = getActualData([results]);
 
     refs.modal.innerHTML = modalFilmTpl(newResults);
     prepareMovieToSaving(newResults);
