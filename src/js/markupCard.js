@@ -81,3 +81,8 @@ export function createMarkupCard(results) {
     refs.listCards.innerHTML = cardTpl(results);
   }
 }
+
+export function createAndRenderMarkup(data) {
+  let newData = getActualData(data);
+  createMarkupCard(newData);
+}
