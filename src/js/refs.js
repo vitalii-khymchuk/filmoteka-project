@@ -6,4 +6,6 @@ export const refs = {
   watchedBtn: document.querySelector('.watched-btn'),
   queueBtn: document.querySelector('.queue-btn'),
   searchForm: document.querySelector('.search-form'),
+  closeAdvBtn: document.querySelector('.avd__close-btn'),
+  advBlock: document.querySelector('.adv'),
 };
