@@ -1,18 +1,10 @@
 .film-card {
-  max-width: 395px;
-
-  @include tab-only {
-    max-width: 336px;
-  }
-
-  @include pc-only {
-    max-width: 280px;
-  }
+  cursor: pointer;
 
    &__link {
   max-width: 395px;
   display: block;
-    cursor: pointer;
+    
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover,

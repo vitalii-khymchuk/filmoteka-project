@@ -3,6 +3,8 @@ import * as genres from '/src/data/genres.json';
 import { createMarkupCard } from '../markupCard';
 import * as placeholderPic from '../../images/coverPlaceholder.jpg';
 
+import { spinnerPlay, spinnerStop } from '../spinner';
+
 const refs = {
   listCardRef: document.querySelector('.card-set'),
 };
