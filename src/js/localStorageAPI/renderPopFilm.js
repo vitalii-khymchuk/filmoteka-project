@@ -1,6 +1,10 @@
 import axios from 'axios';
 import * as genres from '/src/data/genres.json';
-import { createMarkupCard, getActualData } from '../markupCard';
+import {
+  createMarkupCard,
+  getActualData,
+  createAndRenderMarkup,
+} from '../markupCard';
 
 import { spinnerPlay, spinnerStop } from '../spinner';
 
@@ -57,9 +61,7 @@ async function getPopularFilms() {
     const { results } = await themovieApi.getFilms();
     console.log(results);
 
-    let newData = getActualData(results);
-
-    createMarkupCard(newData);
+    createAndRenderMarkup(results);
 
     //
   } catch (error) {
