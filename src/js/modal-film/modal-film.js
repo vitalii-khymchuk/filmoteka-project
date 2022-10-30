@@ -21,7 +21,7 @@ async function onFilmCardClick(event) {
     const newResults = getActualData([results]);
 
     refs.modal.innerHTML = modalFilmTpl(newResults[0]);
-    prepareMovieToSaving(newResults[0]);
+    prepareMovieToSaving(results);
 
     /*     const watchedModalBtn = document.querySelector('.js-watch');
         const queueModalBtn = document.querySelector('.js-queue');
