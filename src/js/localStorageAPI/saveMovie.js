@@ -1,7 +1,7 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { makeQueryForTorrents } from '../torrentAPI/getTorrentLinks';
 import { refs } from '../refs';
-import { createMarkupCard } from '../markupCard';
+import { createAndRenderMarkup } from '../markupCard';
 import movieData from '../../data/one.json';
 export { prepareMovieToSaving, getSavedMovies, removeEventListeners };
 
@@ -104,7 +104,6 @@ function saveMovie(libName) {
   Notify.info(
     `"${currentMovieData.original_title}" has added to your ${libName}`
   );
-  createMarkupCard(savedMovies);
 }
 //////////////////////////////////////////////////////////////////////////////
 
@@ -119,7 +118,7 @@ function deleteMovie(libName) {
   Notify.info(
     `"${currentMovieData.original_title}" has removed from your ${libName}`
   );
-  createMarkupCard(savedMovies);
+  isPageMyLibrary() && createAndRenderMarkup(savedMovies);
 }
 ///////////////////////////////////////////////////////////////////////////
 
@@ -150,5 +149,13 @@ function definiteRefs() {
   refs.btn2 = document.querySelector('.js-queue');
 }
 
+function isPageMyLibrary() {
+  const libraryButtons = document.querySelector('.library-header__btn-list');
+  if (libraryButtons) {
+    return true;
+  } else {
+    return false;
+  }
+}
 // prepareMovieToSaving(movieData);
 // toggleMovie('watched');

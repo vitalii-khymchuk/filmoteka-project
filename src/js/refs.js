@@ -3,4 +3,6 @@ export const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
   modal: document.querySelector('.js-modal'),
+  watchedBtn: document.querySelector('.watched-btn'),
+  queueBtn: document.querySelector('.queue-btn'),
 };
