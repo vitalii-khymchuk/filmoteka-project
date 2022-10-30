@@ -5,4 +5,5 @@ export const refs = {
   modal: document.querySelector('.js-modal'),
   watchedBtn: document.querySelector('.watched-btn'),
   queueBtn: document.querySelector('.queue-btn'),
+  searchForm: document.querySelector('.search-form'),
 };
