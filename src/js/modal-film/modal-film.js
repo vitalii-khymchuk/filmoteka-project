@@ -10,13 +10,14 @@ const refs = {
 
 
 
-async function onFilmCardClick(event) {
-  const { target } = event;
-  console.log(target);
+function onFilmCardClick(event) {
   try {
-    if(target.nodeName === 'UL') {
+    if (!event.target.closest('.film-card')) {
+      console.log(event);
       return;
     }
+    
+    event.preventDefault();
 
     toggleModal();
     document.addEventListener('keydown', keyBoardPress);
@@ -25,9 +26,9 @@ async function onFilmCardClick(event) {
     keyBoardPress()
     onBackdropClick()
 
-    const MovieId = target.closest('li').dataset.id;
+    const MovieId = event.target.closest('li').dataset.id;
     //console.log(MovieId);
-    const { results } = await MovieId.fetchMovieById();
+    const { results } = MovieId.fetchMovieById();
     refs.modal.insertAdjacentHTML('afterbegin', modalFilmTpl(results));
 
 /*     const watchedModalBtn = document.querySelector('.js-watch');
