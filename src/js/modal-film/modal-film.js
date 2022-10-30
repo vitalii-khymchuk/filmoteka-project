@@ -1,13 +1,7 @@
 import modalFilmTpl from '../../templates/mod-film.hbs';
 import { fetchMovieById } from '../localStorageAPI/render-modal-film';
 import { prepareMovieToSaving } from '../localStorageAPI/saveMovie';
-
-const refs = {
-  movieCards: document.querySelector('.card-set'),
-  closeModalBtn: document.querySelector('[data-modal-close]'),
-  backdrop: document.querySelector('.js-backdrop'),
-  modal: document.querySelector('.js-modal'),
-};
+import { refs } from '../refs';
 
 async function onFilmCardClick(event) {
   try {

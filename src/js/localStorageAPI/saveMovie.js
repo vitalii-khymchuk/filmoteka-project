@@ -1,14 +1,15 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { makeQueryForTorrents } from '../torrentAPI/getTorrentLinks';
+import { refs } from '../refs';
+import { createMarkupCard } from '../markupCard';
 import movieData from '../../data/one.json';
 export { prepareMovieToSaving, getSavedMovies, removeEventListeners };
 
-const refs = {
-  btn1: document.querySelector('.btn1'),
-  btn2: document.querySelector('.btn2'),
-};
-
 let currentMovieData = {};
+const refs = {
+  btn1: '',
+  btn2: '',
+};
 
 //this function convert and save data to variable in correct format
 function prepareMovieToSaving(data) {
@@ -48,9 +49,10 @@ function prepareMovieToSaving(data) {
     vote_count: vote_count,
   };
 
-  // addEvtListeners();
-  // changeBtnName('watched');
-  // changeBtnName('queue');
+  definiteRefs();
+  addEvtListeners();
+  changeBtnName('watched');
+  changeBtnName('queue');
   makeQueryForTorrents(currentMovieData.original_title);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -83,7 +85,6 @@ function isMovieInStorage(libName) {
 //change btn name (foe example delete movie to add movie)
 function changeBtnName(libName) {
   const partOfName = isMovieInStorage(libName) ? 'delete from ' : 'add to ';
-
   switch (libName) {
     case 'watched':
       refs.btn1.textContent = (partOfName + libName).toUpperCase();
@@ -103,7 +104,7 @@ function saveMovie(libName) {
   Notify.info(
     `"${currentMovieData.original_title}" has added to your ${libName}`
   );
-  //createMarkupCard(savedMovies);
+  createMarkupCard(savedMovies);
 }
 //////////////////////////////////////////////////////////////////////////////
 
@@ -118,7 +119,7 @@ function deleteMovie(libName) {
   Notify.info(
     `"${currentMovieData.original_title}" has removed from your ${libName}`
   );
-  //createMarkupCard(savedMovies);
+  createMarkupCard(savedMovies);
 }
 ///////////////////////////////////////////////////////////////////////////
 
@@ -144,5 +145,10 @@ function removeEventListeners() {
   refs.btn2.replaceWith(refs.btn2.cloneNode(true));
 }
 
-prepareMovieToSaving(movieData);
-toggleMovie('watched');
+function definiteRefs() {
+  refs.btn1 = document.querySelector('.js-watch');
+  refs.btn2 = document.querySelector('.js-queue');
+}
+
+// prepareMovieToSaving(movieData);
+// toggleMovie('watched');
