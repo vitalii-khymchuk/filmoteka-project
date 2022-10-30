@@ -9,7 +9,6 @@ export async function fetchMovieById() {
   try {
     //spinner start
     const urlAXIOS = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
-
     const { data } = await axios.get(urlAXIOS);
     //spinner stop
     return data;
