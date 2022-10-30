@@ -1,12 +1,7 @@
 import modalFilmTpl from '../../templates/mod-film.hbs';
 import { fetchMovieById } from '../localStorageAPI/render-modal-film';
-
-const refs = {
-  movieCards: document.querySelector('.card-set'),
-  closeModalBtn: document.querySelector('[data-modal-close]'),
-  backdrop: document.querySelector('.js-backdrop'),
-  modal: document.querySelector('.js-modal'),
-};
+import { prepareMovieToSaving } from '../localStorageAPI/saveMovie';
+import { refs } from '../refs';
 
 async function onFilmCardClick(event) {
   try {
@@ -21,9 +16,9 @@ async function onFilmCardClick(event) {
     //document.body.style.overflow = 'scroll';
 
     const MovieId = event.target.closest('li').dataset.id;
-    const { results } = await fetchMovieById(MovieId);
-    console.log(results);
+    const results = await fetchMovieById(MovieId);
     refs.modal.insertAdjacentHTML('afterbegin', modalFilmTpl(results));
+    prepareMovieToSaving(results);
 
     /*     const watchedModalBtn = document.querySelector('.js-watch');
         const queueModalBtn = document.querySelector('.js-queue');
