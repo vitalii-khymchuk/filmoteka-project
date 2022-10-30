@@ -18,11 +18,9 @@
 
 .card-set__item {
   width: 280px;
-  
 
   @include tab-only {
     width: 336px;
-    
   }
 
   @include pc-only {
