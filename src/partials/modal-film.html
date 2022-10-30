@@ -1,87 +1,12 @@
 <button type="button" class="button" data-modal-open>
   відкрити опис фільму
 </button>
-<!-- <div data-modal class="backdrop is-hidden js-backdrop">
-  <div class="modal">
-    <button type="button" data-modal-close class="modal__close-btn">
-      <svg class="modal__close-btn" width="18" height="18">
-        <use href="./images/symbol-defs.svg#close-btn"></use>
-      </svg>
-    </button>
-  </div>
-</div> -->
-
 <div data-modal class="backdrop is-hidden js-backdrop">
-  <div class="modal">
+  <div class="modal js-modal">
     <button type="button" data-modal-close class="modal__close-btn">
       <svg class="modal__close-btn" width="18" height="18">
         <use href="../images/symbol-defs.svg#close-btn"></use>
       </svg>
     </button>
-    <div class="film__wrapper">
-      <img
-        class="film__image"
-        src="/src/images/coverPlaceholder.jpg"
-        alt="${ title || original_title || name }"
-      />
-      <div class="film__information">
-        <h2 class="film__title">${title || original_title || name}</h2>
-        <ul>
-          <li class="film__item">
-            <p class="film__details">Vote / Votes</p>
-            <p class="film__info--uper">
-              <span class="film__rating--orange">${vote_average}</span>
-              <span class="film__rating--divider"> / </span>
-              <span class="film__vote-count">${vote_count}</span>
-            </p>
-          </li>
-          <li class="film__item">
-            <p class="film__details">Popularity</p>
-            <p class="film__info--uper">${popularity}</p>
-          </li>
-          <li class="film__item">
-            <p class="film__details">Original title</p>
-            <p class="film__details--uper">
-              ${title || original_title || name}
-            </p>
-          </li>
-          <li class="film__item">
-            <p class="film__details">Genre</p>
-            <p>${filmGenres}</p>
-          </li>
-        </ul>
-        <h3 class="film__about__title">About</h3>
-        <p class="film__about__text">
-          ${overview} Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Optio ratione modi esse debitis distinctio voluptates, minima illum
-          doloribus nostrum, voluptate vel aliquid! Cum autem distinctio
-          necessitatibus fuga ipsa delectus neque? Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Natus, placeat quisquam! Praesentium
-          doloribus officiis blanditiis, libero delectus exercitationem ipsa
-          vitae amet, sint autem, necessitatibus illum ab excepturi. Numquam,
-          accusantium dolorem. Lorem ipsum dolor sit amet consectetur,
-          adipisicing elit. Ratione repellat voluptatum pariatur sunt, natus
-          dolore aliquam deserunt, saepe placeat est magni. Sed corporis nihil
-          voluptatibus eveniet sit nostrum quas assumenda. Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Ducimus architecto optio atque
-          tempore! Porro pariatur, voluptates officiis, libero impedit cum
-          debitis perferendis ex ratione placeat voluptatum minus odio,
-          doloribus deserunt.
-        </p>
-        <div class="film__button__wrapper">
-          <button type="button" class="film__button" data-id="${id}">
-            Add to watched
-          </button>
-          <button type="button" class="film__button" data-id="${id}">
-            Add to queue
-          </button>
-          <div class="film__trailer">
-            <a class="film__trailer-link" href="#">
-              <p class="film__trailer__text">watch trailer</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

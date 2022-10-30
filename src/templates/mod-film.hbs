@@ -1,0 +1,56 @@
+<div class='film__wrapper'>
+  <img
+    class='film__image'
+    src='https:'
+    image.tmdb.org
+    t
+    p
+    original
+    {{poster_path}}
+    alt={{title}}
+  />
+  <div class='film__information'>
+    <h2 class='film__title'>{{original_title}}</h2>
+    <ul>
+      <li class='film__item'>
+        <p class='film__details'>Vote / Votes</p>
+        <p class='film__info--upper'>
+          <span class='film__rating--orange'>{{vote_average}}</span>
+          <span class='film__rating--divider'> / </span>
+          <span class='film__vote-count'>{{vote_count}}</span>
+        </p>
+      </li>
+      <li class='film__item'>
+        <p class='film__details'>Popularity</p>
+        <p class='film__info--upper'>{{popularity}}</p>
+      </li>
+      <li class='film__item'>
+        <p class='film__details'>Original title</p>
+        <p class='film__details--upper'>
+          {{original_title}}
+        </p>
+      </li>
+      <li class='film__item'>
+        <p class='film__details'>Genre</p>
+        <p>{{filmGenres}}</p>
+      </li>
+    </ul>
+    <h3 class='film__about__title'>About</h3>
+    <p class='film__about__text'>
+      {{overview}}
+    </p>
+    <div class='film__button__wrapper'>
+      <button type='button' class='film__button js-watch' data-id='{{id}}'>
+        Add to watched
+      </button>
+      <button type='button' class='film__button js-queue' data-id='{{id}}'>
+        Add to queue
+      </button>
+      <div class='film__trailer'>
+        <a class='film__trailer-link js-trailer' href='#'>
+          <p class='film__trailer__text'>watch trailer</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
