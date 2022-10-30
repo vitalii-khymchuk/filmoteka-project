@@ -1,10 +1,13 @@
 import modalFilmTpl from '../../templates/mod-film.hbs';
-import { fetchMovieById } from '../localStorageAPI/render-modal-film';
+import { fetchMovieById } from '../modal-film/render-modal-film';
 import { prepareMovieToSaving } from '../localStorageAPI/saveMovie';
 import { refs } from '../refs';
 import { getActualData } from '../markupCard';
+import { initTrailerListener, removeTrailerListener } from '../trailer/trailer';
+import { spinnerPlay, spinnerStop } from '../spinner';
 
 async function onFilmCardClick(event) {
+  spinnerPlay();
   try {
     if (!event.target.closest('.film-card')) {
       return;
@@ -16,11 +19,13 @@ async function onFilmCardClick(event) {
     document.addEventListener('keydown', keyBoardPress);
     onScrollHidden();
 
-    const MovieId = event.target.closest('li').dataset.id;
-    const results = await fetchMovieById(MovieId);
+    const movieId = event.target.closest('li').dataset.id;
+
+    const results = await fetchMovieById(movieId);
     const newResults = getActualData([results]);
 
-    refs.modal.innerHTML = modalFilmTpl(newResults);
+    refs.modal.innerHTML = modalFilmTpl(newResults[0]);
+    initTrailerListener(movieId);
     prepareMovieToSaving(newResults);
 
     /*     const watchedModalBtn = document.querySelector('.js-watch');
@@ -32,30 +37,23 @@ async function onFilmCardClick(event) {
         youtubeBtn.addEventListener('click', onTrailerBtnClick); */
   } catch (error) {
     console.log(error);
+  } finally {
+    spinnerStop();
   }
 }
 
-function objTransformInArr(results) {
-  newResultsArr = Object.entries(results);
-  newResultsArr.forEach(([key, value]) => {
-    console.table(key, value);
-  });
-}
-
-/* function openBtnClick() {
-  toggleModal();
-  document.addEventListener('keydown', keyBoardPress);
-} */
 function closeBtnClick() {
   toggleModal();
   document.removeEventListener('keydown', keyBoardPress);
   onScroll();
+  removeTrailerListener();
 }
 
 function keyBoardPress(event) {
   if (event.key === 'Escape') {
     closeBtnClick();
     onScroll();
+    removeTrailerListener();
   }
 }
 
@@ -63,6 +61,7 @@ function onBackdropClick(event) {
   if (event.target === event.currentTarget) {
     closeBtnClick();
     onScroll();
+    removeTrailerListener();
   }
 }
 
