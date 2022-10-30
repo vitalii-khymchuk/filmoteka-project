@@ -58,9 +58,11 @@ function onBackdropClick(event) {
   }
 }
 
-refs.movieCards.addEventListener('click', onFilmCardClick);
-refs.closeModalBtn.addEventListener('click', closeBtnClick);
-refs.backdrop.addEventListener('click', onBackdropClick);
+export function initModal() {
+  refs.movieCards.addEventListener('click', onFilmCardClick);
+  refs.closeModalBtn.addEventListener('click', closeBtnClick);
+  refs.backdrop.addEventListener('click', onBackdropClick);
+}
 
 function toggleModal() {
   refs.backdrop.classList.toggle('is-hidden');
