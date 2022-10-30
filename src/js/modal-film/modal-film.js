@@ -1,43 +1,41 @@
 import modalFilmTpl from '../../templates/mod-film.hbs';
-import renderOneFilm from '../../data/one.json';
-import { getInfoAboutFilm } from '../localStorageAPI/renderModalFilm';
-console.log(modalFilmTpl(renderOneFilm));
-
-const refs = {
-  openModalBtn: document.querySelector('[data-modal-open]'),
-  closeModalBtn: document.querySelector('[data-modal-close]'),
-  backdrop: document.querySelector('.js-backdrop'),
-  modal: document.querySelector('.js-modal'),
-};
+import { fetchMovieById } from '../localStorageAPI/render-modal-film';
+import { prepareMovieToSaving } from '../localStorageAPI/saveMovie';
+import { refs } from '../refs';
 
 async function onFilmCardClick(event) {
   try {
-
-    if (event.target.nodeName === 'UL') {
-       return;
+    if (!event.target.closest('.film-card')) {
+      return;
     }
-    toggleModal()
-    keyBoardPress()
-    onBackdropClick()
+
+    event.preventDefault();
+
+    toggleModal();
+    document.addEventListener('keydown', keyBoardPress);
+    //document.body.style.overflow = 'scroll';
 
     const MovieId = event.target.closest('li').dataset.id;
-    //const film = await MovieId.fetchMovieById();
-      refs.modal.insertAdjacentHTML('afterbegin', makeFilmModalMarkup(film));
+    const results = await fetchMovieById(MovieId);
+    refs.modal.insertAdjacentHTML('afterbegin', modalFilmTpl(results));
+    prepareMovieToSaving(results);
+
+    /*     const watchedModalBtn = document.querySelector('.js-watch');
+        const queueModalBtn = document.querySelector('.js-queue');
+        const youtubeBtn = document.querySelector('.js-trailer');
     
-/*     const watchedModalBtn = document.querySelector('.js-watch');
-    const queueModalBtn = document.querySelector('.js-queue');
-    const youtubeBtn = document.querySelector('.js-trailer');
-
-    watchedModalBtn.addEventListener('click', onWatchedModalBtnClick);
-    queueModalBtn.addEventListener('click', onQueueModalBtnClick);
-    youtubeBtn.addEventListener('click', onTrailerBtnClick); */
-
+        watchedModalBtn.addEventListener('click', onWatchedModalBtnClick);
+        queueModalBtn.addEventListener('click', onQueueModalBtnClick);
+        youtubeBtn.addEventListener('click', onTrailerBtnClick); */
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-function openBtnClick() {
+/* function openBtnClick() {
   toggleModal();
   document.addEventListener('keydown', keyBoardPress);
-}
+} */
 function closeBtnClick() {
   toggleModal();
   document.removeEventListener('keydown', keyBoardPress);
@@ -55,7 +53,7 @@ function onBackdropClick(event) {
   }
 }
 
-refs.openModalBtn.addEventListener('click', openBtnClick);
+refs.movieCards.addEventListener('click', onFilmCardClick);
 refs.closeModalBtn.addEventListener('click', closeBtnClick);
 refs.backdrop.addEventListener('click', onBackdropClick);
 

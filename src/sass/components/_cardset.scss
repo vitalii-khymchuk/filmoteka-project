@@ -1,25 +1,28 @@
 .card-set {
   display: flex;
+  margin-top: 20px;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
 
   @include tab-only {
     gap: 32px;
+    margin-top: 60px;
   }
 
   @include pc-only {
     gap: 32px 15.5px;
+    margin-top: 60px;
   }
 }
 
 .card-set__item {
   width: 280px;
-  height: 443px;
+  
 
   @include tab-only {
     width: 336px;
-    height: 494px;
+    
   }
 
   @include pc-only {
