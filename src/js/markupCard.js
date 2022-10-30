@@ -27,12 +27,12 @@ export function formateGenres(genresCodeArray, genresObjectArray) {
     slicedGenres = slicedGenres.slice(0, 2);
     slicedGenres.push(' Other');
   }
-  return slicedGenres;
+  return slicedGenres.join(', ');
 }
 function convertGenre(genreCode) {
   const genreElement = genres.find(e => e.id == genreCode);
 
-  return ' ' + genreElement.name;
+  return genreElement.name;
 }
 
 /////////Обрезает дату релиза
@@ -53,7 +53,10 @@ export function getActualData(results) {
       title,
       id,
       vote_average,
+      vote_count,
+      original_title,
       overview,
+      popularity,
     } = results) => {
       let newResult = {
         id: id,
@@ -63,6 +66,9 @@ export function getActualData(results) {
         title: title,
         vote_average: vote_averageRound(vote_average),
         overview: overview,
+        original_title: original_title,
+        vote_count: vote_count,
+        popularity: vote_averageRound(popularity),
       };
       return newResult;
     }
