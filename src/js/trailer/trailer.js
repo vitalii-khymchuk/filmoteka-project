@@ -5,19 +5,28 @@ import { getTrailer } from './getTrailerAPI';
 
 //позже перенесу в общие когда кнопку прикрутим
 const refs = {
-  trailerBtn: document.querySelector('.trailerbtn'),
+  trailerBtn1: document.querySelector('.trailerbtn'),
+  trailerBtn: document.querySelector('.js-trailer'),
   backdrop: document.querySelector('.js-backdrop-trailer'),
   backdropFilm: document.querySelector('.js-backdrop'),
   body: document.querySelector('body'),
 };
 
 // нужна переменная для получения movieId открытого фильма
-let movieId = 852046;
+let movieId = 49046;
 
 let player;
-//Функция инициализации
-//Функция убрать листенер
-refs.trailerBtn.addEventListener('click', onOpenTrailer);
+
+export function initTrailerListener() {
+  refs.trailerBtn.addEventListener('click', onOpenTrailer);
+}
+
+export function removeTrailerListener() {
+  refs.trailerBtn.removeEventListener('click', onOpenTrailer);
+}
+
+//Временная
+refs.trailerBtn1.addEventListener('click', onOpenTrailer);
 
 function onOpenTrailer() {
   spinnerPlay();
