@@ -1,10 +1,5 @@
 import { Spinner } from "spin.js";
-
-const refs = {
-    spinner: document.querySelector('.js-spinner'),
-    load:document.querySelector('[data-load]'),
-
-}
+import { refs } from './refs';
 
 const opts = {
     lines: 18, // The number of lines to draw
