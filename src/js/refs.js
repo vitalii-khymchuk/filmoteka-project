@@ -8,4 +8,7 @@ export const refs = {
   searchForm: document.querySelector('.search-form'),
   closeAdvBtn: document.querySelector('.avd__close-btn'),
   advBlock: document.querySelector('.adv'),
+  trailerBtn: document.querySelector('.js-trailer'),
+  backdropTrailer: document.querySelector('.js-backdrop-trailer'),
+  body: document.querySelector('body'),
 };
