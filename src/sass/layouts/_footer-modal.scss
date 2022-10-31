@@ -26,6 +26,16 @@
       padding: 40px;
     }
   }
+
+   
+  .team-title {
+    font-size: 30px;
+    text-transform: uppercase;
+    color: $accentColor;
+    text-align: center;
+    margin-bottom: 10px;
+
+  }
   
   .footer-modal-our-team-list {
     display: flex;
@@ -91,7 +101,9 @@
     padding: 10px;
     background-color: $secondaryBgColor;
     flex-grow: 1;
+    border-top: 2px solid $accentColor;
   }
+
   .comand__card-dark {
     background-color: $mainTextColor;
   }
@@ -102,7 +114,7 @@
     font-size: 14px;
     line-height: 1.3;
     letter-spacing: 0.03em;
-    color: #746c6c;
+    color: $mainTextColor;
     margin-bottom: 10px;
   }
   .comand__card--about {
@@ -119,7 +131,8 @@
     font-size: 14 px;
     line-height: 1.5;
     letter-spacing: 0.03em;
-    color: #746c6c;
+    color: $mainTextColor;
+    text-transform: uppercase;
   }
   
   .ourteam-photo {
@@ -215,4 +228,5 @@
     background: transparent;
     border: none;
     cursor: pointer;
+   
   }
