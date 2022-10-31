@@ -39,3 +39,4 @@ openModalFooter = () => {
     this.refs.upScroll.classList.remove('visually-hidden');
     window.removeEventListener('keydown', this.onEscKeyFooter);
   };
+
