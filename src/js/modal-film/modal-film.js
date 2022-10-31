@@ -27,14 +27,6 @@ async function onFilmCardClick(event) {
     refs.modal.innerHTML = modalFilmTpl(newResults[0]);
     prepareMovieToSaving(results);
     initTrailerListener(movieId);
-
-    /*     const watchedModalBtn = document.querySelector('.js-watch');
-        const queueModalBtn = document.querySelector('.js-queue');
-        const youtubeBtn = document.querySelector('.js-trailer');
-    
-        watchedModalBtn.addEventListener('click', onWatchedModalBtnClick);
-        queueModalBtn.addEventListener('click', onQueueModalBtnClick);
-        youtubeBtn.addEventListener('click', onTrailerBtnClick); */
   } catch (error) {
     console.log(error);
   } finally {
@@ -47,6 +39,7 @@ function closeBtnClick() {
   document.removeEventListener('keydown', keyBoardPress);
   onScroll();
   removeTrailerListener();
+  onClearModalWindow();
 }
 
 function keyBoardPress(event) {
@@ -57,6 +50,7 @@ function keyBoardPress(event) {
     closeBtnClick();
     onScroll();
     removeTrailerListener();
+    onClearModalWindow();
   }
 }
 
@@ -65,6 +59,7 @@ function onBackdropClick(event) {
     closeBtnClick();
     onScroll();
     removeTrailerListener();
+    onClearModalWindow();
   }
 }
 
@@ -84,4 +79,8 @@ function onScroll() {
 
 function onScrollHidden() {
   document.body.style.overflow = 'hidden';
+}
+
+function onClearModalWindow() {
+  refs.modal.innerHTML = '';
 }
