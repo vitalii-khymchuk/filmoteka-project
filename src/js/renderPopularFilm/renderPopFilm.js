@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as genres from '/src/data/genres.json';
 import { createAndRenderMarkup } from '../markupCard';
-
+import { initPagination } from '../pagination/pagination';
 import { spinnerPlay, spinnerStop } from '../spinner';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -18,7 +18,6 @@ export class ThemovieAPI {
     }&page=${this.#page}`;
 
     const { data } = await axios.get(urlAXIOS);
-
     return data;
   }
 
@@ -48,8 +47,10 @@ async function getPopularFilms() {
     const parced = JSON.stringify(genres);
     const genresFilmData = JSON.parse(parced);
 
-    const { results } = await themovieApi.getFilms();
+    const data = await themovieApi.getFilms();
+    const { results } = data;
 
+    initPagination(data);
     createAndRenderMarkup(results);
 
     //
