@@ -11,4 +11,6 @@ export const refs = {
   trailerBtn: document.querySelector('.js-trailer'),
   backdropTrailer: document.querySelector('.js-backdrop-trailer'),
   body: document.querySelector('body'),
+  spinner: document.querySelector('.js-spinner'),
+  load: document.querySelector('[data-load]'),
 };
