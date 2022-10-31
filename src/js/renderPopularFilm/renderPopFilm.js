@@ -37,8 +37,10 @@ export const themovie = new ThemovieAPI();
 export async function getPopularFilms() {
   try {
     spinnerPlay();
+    if (localStorage.getItem('page')) {
+      themovie.page = localStorage.getItem('page');
+    }
 
-    themovie.page = localStorage.getItem('page');
     const parced = JSON.stringify(genres);
     const genresFilmData = JSON.parse(parced);
 
