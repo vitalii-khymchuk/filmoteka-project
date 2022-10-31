@@ -9,6 +9,9 @@
   <body>
     <include src="./partials/header.html"></include>
     <main>
+      <div class="movieContainer backdrop is-hidden">
+        <div id="player" class="webtor"></div>
+      </div>
       <include src="./partials/trailer.html"></include>
       <include src="./partials/cardset.html"></include>
       <include src="./partials/modal-film.html"></include>
@@ -42,5 +45,10 @@
     <script type="module" src="../index.js"></script>
     <script type="module" src="../js/modal-film/modal-film.js"></script>
     <script type="module" src="../js/buttonUp.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@webtor/embed-sdk-js/dist/index.min.js"
+      charset="utf-8"
+      async
+    ></script>
   </body>
 </html>

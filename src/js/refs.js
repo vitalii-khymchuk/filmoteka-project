@@ -2,7 +2,8 @@ export const refs = {
   movieCards: document.querySelector('.card-set'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.js-backdrop'),
-  modal: document.querySelector('.js-modal__body'),
+  modalBody: document.querySelector('.js-modal__body'),
+  modal: document.querySelector('.js-modal'),
   watchedBtn: document.querySelector('.watched-btn'),
   queueBtn: document.querySelector('.queue-btn'),
   searchForm: document.querySelector('.search-form'),
@@ -13,5 +14,6 @@ export const refs = {
   body: document.querySelector('body'),
   spinner: document.querySelector('.js-spinner'),
   load: document.querySelector('[data-load]'),
+  body: document.querySelector('body'),
   logo: document.querySelector('.header-nav__link'),
 };
