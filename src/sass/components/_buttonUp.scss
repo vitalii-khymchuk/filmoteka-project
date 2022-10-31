@@ -1,11 +1,11 @@
 #toTop {
   position: fixed;
   display: inline-block;
-  bottom: 30px;
+  bottom: 60px;
   right: -40px;
   width: 40px;
   height: 40px;
-  z-index: 999;
+  z-index: 1;
   cursor: pointer;
   text-align: center;
   color: #fff;
@@ -37,5 +37,5 @@
 #toTop.show {
   opacity: 1;
   visibility: visible;
-  right: calc(2%);
+  right: calc(5%);
 }
