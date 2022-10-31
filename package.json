@@ -29,6 +29,7 @@
     "parcel-plugin-handlebars": "^0.4.4",
     "parcel-transformer-hbs": "^1.0.4",
     "spin.js": "^4.1.1",
+    "tui-pagination": "^3.4.1",
     "youtube-player": "^5.5.2"
   },
   "devDependencies": {

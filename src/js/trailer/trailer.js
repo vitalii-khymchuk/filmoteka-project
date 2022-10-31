@@ -1,23 +1,16 @@
 import { spinnerPlay, spinnerStop } from '../spinner';
 import YouTubePlayer from 'youtube-player';
 import { getTrailer } from './getTrailerAPI';
-// import { refs } from './refs';
+import { refs } from '../refs';
 
-//позже перенесу в общие когда кнопку прикрутим
-const refs = {
-  trailerBtn1: document.querySelector('.trailerbtn'),
-  trailerBtn: document.querySelector('.js-trailer'),
-  backdrop: document.querySelector('.js-backdrop-trailer'),
-  backdropFilm: document.querySelector('.js-backdrop'),
-  body: document.querySelector('body'),
-};
-
-// нужна переменная для получения movieId открытого фильма
-let movieId = 49046;
-
+let exportedMovieId = 0;
 let player;
 
-export function initTrailerListener() {
+// refs.backdropTrailer.classList.contains('is-hidden') &&
+
+export function initTrailerListener(movieId) {
+  exportedMovieId = movieId;
+  refs.trailerBtn = document.querySelector('.js-trailer');
   refs.trailerBtn.addEventListener('click', onOpenTrailer);
 }
 
@@ -25,18 +18,15 @@ export function removeTrailerListener() {
   refs.trailerBtn.removeEventListener('click', onOpenTrailer);
 }
 
-//Временная
-refs.trailerBtn1.addEventListener('click', onOpenTrailer);
-
 function onOpenTrailer() {
   spinnerPlay();
-  refs.body.classList.toggle('no-scroll');
-  refs.backdrop.classList.toggle('is-hidden');
-  // refs.backdropFilm.classList.toggle('is-hidden');
-  onFetchTrailer();
+  refs.backdropTrailer.classList.remove('is-hidden');
+  onFetchTrailer(exportedMovieId);
+  refs.backdropTrailer.addEventListener('click', onCloseTrailer);
+  document.addEventListener('keydown', onEscCloseTrailer);
 }
 
-async function onFetchTrailer() {
+async function onFetchTrailer(movieId) {
   try {
     const {
       data: { results },
@@ -55,14 +45,17 @@ async function onFetchTrailer() {
   }
 }
 
-refs.backdrop.addEventListener('click', onCloseTrailer);
-// document.addEventListener('keydown', onCloseTrailer);
-
 function onCloseTrailer(event) {
-  refs.body.classList.toggle('no-scroll');
-  refs.backdrop.classList.toggle('is-hidden');
-  // refs.backdropFilm.classList.toggle('is-hidden');
+  refs.backdropTrailer.classList.add('is-hidden');
   stopVideo();
+}
+
+function onEscCloseTrailer(event) {
+  setTimeout(() => {
+    if (event.key === 'Escape') {
+      onCloseTrailer();
+    }
+  }, 50);
 }
 
 function onLoadPlayer(data) {
@@ -74,6 +67,8 @@ function onLoadPlayer(data) {
 
 function stopVideo() {
   player.stopVideo();
-  refs.backdrop.innerHTML =
+  refs.backdropTrailer.innerHTML =
     '<div class="video-trailer" id="video-player"></div>';
+  refs.backdropTrailer.removeEventListener('click', onCloseTrailer);
+  document.removeEventListener('keydown', onEscCloseTrailer);
 }

@@ -25,8 +25,8 @@ async function onFilmCardClick(event) {
     const newResults = getActualData([results]);
 
     refs.modal.innerHTML = modalFilmTpl(newResults[0]);
+    prepareMovieToSaving(results);
     initTrailerListener(movieId);
-    prepareMovieToSaving(newResults[0]);
 
     /*     const watchedModalBtn = document.querySelector('.js-watch');
         const queueModalBtn = document.querySelector('.js-queue');
@@ -50,7 +50,10 @@ function closeBtnClick() {
 }
 
 function keyBoardPress(event) {
-  if (event.key === 'Escape') {
+  if (
+    refs.backdropTrailer.classList.contains('is-hidden') &&
+    event.key === 'Escape'
+  ) {
     closeBtnClick();
     onScroll();
     removeTrailerListener();

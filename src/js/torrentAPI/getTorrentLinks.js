@@ -3,10 +3,11 @@ import { createTorrentMarkup } from './torrentFilesMarkup';
 export function makeQueryForTorrents(query) {
   const options = {
     method: 'GET',
-    url: `https://movies-and-serials-torrent.p.rapidapi.com/movies/search/${query}`,
+    url: 'https://easytorrents1.p.rapidapi.com/',
+    params: { type: 'movie', name: 'Luca', language: 'en', quality: '1080p' },
     headers: {
-      'X-RapidAPI-Key': 'aa70bf373cmsh53640cedb8c24b9p1b6742jsn6542bfef771f',
-      'X-RapidAPI-Host': 'movies-and-serials-torrent.p.rapidapi.com',
+      'X-RapidAPI-Key': 'b997617050msh5473a309cb32343p12e03ejsn8a9f9850f874',
+      'X-RapidAPI-Host': 'easytorrents1.p.rapidapi.com',
     },
   };
 
@@ -14,6 +15,7 @@ export function makeQueryForTorrents(query) {
 }
 
 function responseHandle({ data }) {
+  console.log(data);
   const movies = data.data.movies;
   createTorrentMarkup(movies);
 }

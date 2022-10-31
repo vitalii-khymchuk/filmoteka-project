@@ -6,4 +6,11 @@ export const refs = {
   watchedBtn: document.querySelector('.watched-btn'),
   queueBtn: document.querySelector('.queue-btn'),
   searchForm: document.querySelector('.search-form'),
+  closeAdvBtn: document.querySelector('.avd__close-btn'),
+  advBlock: document.querySelector('.adv'),
+  trailerBtn: document.querySelector('.js-trailer'),
+  backdropTrailer: document.querySelector('.js-backdrop-trailer'),
+  body: document.querySelector('body'),
+  spinner: document.querySelector('.js-spinner'),
+  load: document.querySelector('[data-load]'),
 };

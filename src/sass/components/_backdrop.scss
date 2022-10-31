@@ -4,7 +4,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 10;
   opacity: 1;
 
   background-color: rgba(0, 0, 0, 0.8);
@@ -15,6 +15,10 @@
 
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.js-backdrop-trailer {
+  z-index: 11;
 }
 
 .is-hidden {
@@ -30,8 +34,4 @@
   opacity: 0;
 
   transform: translate(-50%, -100%);
-}
-
-.no-scroll {
-  overflow: hidden;
 }
