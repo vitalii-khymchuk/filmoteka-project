@@ -13,4 +13,5 @@ export const refs = {
   body: document.querySelector('body'),
   spinner: document.querySelector('.js-spinner'),
   load: document.querySelector('[data-load]'),
+  logo: document.querySelector('.header-nav__link'),
 };
