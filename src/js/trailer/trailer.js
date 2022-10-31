@@ -6,8 +6,6 @@ import { refs } from '../refs';
 let exportedMovieId = 0;
 let player;
 
-// refs.backdropTrailer.classList.contains('is-hidden') &&
-
 export function initTrailerListener(movieId) {
   exportedMovieId = movieId;
   refs.trailerBtn = document.querySelector('.js-trailer');
@@ -18,12 +16,21 @@ export function removeTrailerListener() {
   refs.trailerBtn.removeEventListener('click', onOpenTrailer);
 }
 
-function onOpenTrailer() {
-  spinnerPlay();
-  refs.backdropTrailer.classList.remove('is-hidden');
-  onFetchTrailer(exportedMovieId);
+function addEvtListener() {
   refs.backdropTrailer.addEventListener('click', onCloseTrailer);
   document.addEventListener('keydown', onEscCloseTrailer);
+}
+
+function removeEvtListener() {
+  refs.backdropTrailer.removeEventListener('click', onCloseTrailer);
+  document.removeEventListener('keydown', onEscCloseTrailer);
+}
+
+function onOpenTrailer() {
+  refs.backdropTrailer.classList.remove('is-hidden');
+  spinnerPlay();
+  onFetchTrailer(exportedMovieId);
+  addEvtListener();
 }
 
 async function onFetchTrailer(movieId) {
@@ -69,6 +76,5 @@ function stopVideo() {
   player.stopVideo();
   refs.backdropTrailer.innerHTML =
     '<div class="video-trailer" id="video-player"></div>';
-  refs.backdropTrailer.removeEventListener('click', onCloseTrailer);
-  document.removeEventListener('keydown', onEscCloseTrailer);
+  removeEvtListener();
 }
