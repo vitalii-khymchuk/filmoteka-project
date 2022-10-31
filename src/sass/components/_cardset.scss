@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   gap: 20px;
 
+  
   @include tab-only {
     gap: 32px;
     margin-top: 60px;
@@ -17,7 +18,9 @@
 }
 
 .card-set__item {
-  width: 280px;
+  width: 760px;
+  background-size: cover;
+  flex-shrink: 1;
 
   @include tab-only {
     width: 336px;
