@@ -8,4 +8,6 @@ export const refs = {
   searchForm: document.querySelector('.search-form'),
   closeAdvBtn: document.querySelector('.avd__close-btn'),
   advBlock: document.querySelector('.adv'),
+  spinner: document.querySelector('.js-spinner'),
+  load:document.querySelector('[data-load]'),
 };
