@@ -1,0 +1,224 @@
+/*!
+ * TOAST UI Pagination
+ * @version 3.4.1
+ * @author NHN FE Development Team <dl_javascript@nhn.com>
+ * @license MIT
+ */
+@charset 'utf-8';
+.tui-pagination * {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.tui-ico-ellipsis,
+.tui-ico-first,
+.tui-ico-last,
+.tui-ico-next,
+.tui-ico-prev {
+  overflow: hidden;
+}
+
+.tui-pagination {
+  height: 40px;
+  margin: 14px 0 12px;
+  line-height: normal;
+  text-align: center;
+  font-size: 0;
+}
+
+.tui-pagination .tui-page-btn {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 14px 0 0px;
+  margin-left: 0;
+  color: #333;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1;
+  text-decoration: none;
+  vertical-align: middle;
+  border-radius: 5px;
+}
+
+/* .tui-pagination .tui-page-btn:hover {
+    background-color: #f4f4f4;
+} */
+
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  color: #fff;
+  background: #ff6b08;
+  border-radius: 5px;
+  cursor: default;
+}
+
+/* .tui-pagination .tui-is-selected:hover {
+    background-color: #4b96e6;
+} */
+
+.tui-pagination .tui-first-child.tui-is-selected,
+.tui-pagination strong.tui-first-child {
+  margin-left: 0;
+}
+
+/* .tui-pagination .tui-first-child, .tui-pagination .tui-prev-is-ellip {
+    border-left: 1px solid #ddd
+}
+
+
+.tui-pagination .tui-last-child, .tui-pagination  {
+    border-right: 1px solid #ddd
+} */
+
+/* .tui-pagination .tui-first-child.tui-is-selected {
+    border-left: 1px solid #4b96e6
+} */
+
+/* .tui-pagination .tui-last-child.tui-is-selected {
+    border-right: 1px solid #4b96e6
+} */
+
+.tui-pagination .tui-prev,
+.tui-pagination .tui-next {
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+  font-size: 0;
+  line-height: 26px;
+  white-space: nowrap;
+  font-weight: normal;
+
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
+.tui-pagination .tui-prev-is-ellip {
+  border-right: 0;
+}
+
+.tui-pagination .tui-next-is-ellip {
+  border-left: 0;
+}
+
+.tui-pagination,
+.tui-pagination .tui-next {
+  border-left: 0;
+}
+
+.tui-pagination .tui-ico-prev,
+.tui-pagination .tui-ico-next {
+  background: url(/src/images/arrow-left.svg) no-repeat 0 0;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0px;
+}
+
+.tui-pagination .tui-prev-is-ellip,
+.tui-pagination .tui-next-is-ellip {
+  padding: 10px;
+  line-height: 1;
+}
+
+.tui-pagination .tui-prev {
+  margin-right: 10px;
+}
+
+.tui-pagination .tui-next {
+  margin-left: 10px;
+}
+
+.tui-pagination .tui-ico-first {
+  display: none;
+  width: 11px;
+  height: 10px;
+  background: none;
+}
+
+.tui-pagination .tui-ico-prev {
+  width: 16px;
+  height: 16px;
+
+  /* background-position: -26px 0px */
+}
+
+.tui-pagination .tui-ico-next {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+  /* background-position: -13px -24px */
+}
+
+.tui-pagination .tui-ico-last {
+  display: none;
+  width: 16px;
+  height: 16px;
+  /* background-position: 0px -12px */
+}
+
+.tui-pagination .tui-ico-ellip {
+  width: 10px;
+  height: 2px;
+  margin-top: 16px;
+  vertical-align: top;
+  background-position: 0px -24px;
+}
+
+.tui-pagination .tui-is-disabled:hover {
+  /* background: #fff; */
+  cursor: default;
+}
+
+/* .tui-pagination .tui-is-disabled .tui-ico-prev {
+       background-position: 5px 13px;
+} */
+
+.tui-pagination .tui-is-disabled .tui-ico-first {
+  background-position: -13px 0px;
+}
+
+.tui-pagination .tui-is-disabled .tui-ico-next {
+  background-position: -21px -24px;
+}
+
+.tui-pagination .tui-is-disabled .tui-ico-last {
+  background-position: -13px -12px;
+}
+
+.tui-page-inputs {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.tui-page-inputs .tui-page-input {
+  display: inline-block;
+  width: 10px;
+  height: 12px;
+  padding: 8px 0 6px;
+  font-size: 12px;
+  text-align: center;
+  color: #333;
+  border: 0;
+  outline: none;
+}
+
+.tui-page-inputs .tui-page-current {
+  color: #4b96e6;
+}
+
+.tui-page-separator {
+  display: inline-block;
+  font-size: 12px;
+  height: 12px;
+  padding: 8px 0 6px;
+  vertical-align: top;
+}
+
+.tui-pagination .tui-first,
+.tui-pagination .tui-last {
+  display: none;
+}
