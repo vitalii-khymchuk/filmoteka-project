@@ -39,15 +39,15 @@ export class ThemovieAPI {
 }
 /////// /////// /////// /////// ///////
 
-const themovieApi = new ThemovieAPI();
+export const themovie = new ThemovieAPI();
 
-async function getPopularFilms() {
+export async function getPopularFilms() {
   try {
     spinnerPlay();
     const parced = JSON.stringify(genres);
     const genresFilmData = JSON.parse(parced);
 
-    const data = await themovieApi.getFilms();
+    const data = await themovie.getFilms();
     const { results } = data;
 
     initPagination(data);
