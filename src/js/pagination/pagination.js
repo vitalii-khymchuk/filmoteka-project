@@ -3,9 +3,9 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
 const container = document.getElementById('pagination');
-let pagination;
+export let pagination;
 
-export function initPagination(data) {
+export function initPagination(data, callback) {
   const { page, results, total_results } = data;
 
   const options = {
@@ -40,6 +40,6 @@ export function initPagination(data) {
     const currentPage = event.page;
 
     themovie.page = currentPage;
-    getPopularFilms();
+    callback();
   });
 }
