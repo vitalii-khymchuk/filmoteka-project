@@ -50,7 +50,10 @@ function closeBtnClick() {
 }
 
 function keyBoardPress(event) {
-  if (event.key === 'Escape') {
+  if (
+    refs.backdropTrailer.classList.contains('is-hidden') &&
+    event.key === 'Escape'
+  ) {
     closeBtnClick();
     onScroll();
     removeTrailerListener();

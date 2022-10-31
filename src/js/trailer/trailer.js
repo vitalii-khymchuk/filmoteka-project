@@ -22,6 +22,8 @@ function onOpenTrailer() {
   spinnerPlay();
   refs.backdropTrailer.classList.remove('is-hidden');
   onFetchTrailer(exportedMovieId);
+  refs.backdropTrailer.addEventListener('click', onCloseTrailer);
+  document.addEventListener('keydown', onEscCloseTrailer);
 }
 
 async function onFetchTrailer(movieId) {
@@ -43,18 +45,17 @@ async function onFetchTrailer(movieId) {
   }
 }
 
-refs.backdropTrailer.addEventListener('click', onCloseTrailer);
-document.addEventListener('keydown', onEscCloseTrailer);
-
 function onCloseTrailer(event) {
   refs.backdropTrailer.classList.add('is-hidden');
   stopVideo();
 }
 
 function onEscCloseTrailer(event) {
-  if (event.key === 'Escape') {
-    onCloseTrailer();
-  }
+  setTimeout(() => {
+    if (event.key === 'Escape') {
+      onCloseTrailer();
+    }
+  }, 50);
 }
 
 function onLoadPlayer(data) {
@@ -68,4 +69,6 @@ function stopVideo() {
   player.stopVideo();
   refs.backdropTrailer.innerHTML =
     '<div class="video-trailer" id="video-player"></div>';
+  refs.backdropTrailer.removeEventListener('click', onCloseTrailer);
+  document.removeEventListener('keydown', onEscCloseTrailer);
 }
