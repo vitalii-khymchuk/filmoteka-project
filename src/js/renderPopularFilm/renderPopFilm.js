@@ -3,6 +3,7 @@ import * as genres from '/src/data/genres.json';
 import { createAndRenderMarkup } from '../markupCard';
 import { initPagination } from '../pagination/pagination';
 import { spinnerPlay, spinnerStop } from '../spinner';
+import { initPagination } from '../pagination/pagination';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
@@ -50,7 +51,7 @@ export async function getPopularFilms() {
     const data = await themovie.getFilms();
     const { results } = data;
 
-    initPagination(data);
+    initPagination(data, getPopularFilms);
     createAndRenderMarkup(results);
 
     //
