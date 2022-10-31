@@ -4,6 +4,7 @@ import { createAndRenderMarkup } from '../markupCard';
 import { initPagination } from '../pagination/pagination';
 import { spinnerPlay, spinnerStop } from '../spinner';
 import { initPagination } from '../pagination/pagination';
+import { refs } from '../refs';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
@@ -59,3 +60,9 @@ export async function getPopularFilms() {
 }
 
 getPopularFilms();
+
+refs.logo.addEventListener('click', clearLocalStorage);
+
+function clearLocalStorage() {
+  localStorage.removeItem('page');
+}
