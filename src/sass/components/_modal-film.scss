@@ -37,7 +37,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  //padding: 6px;
   border: none;
   background-color: transparent;
 
@@ -150,7 +149,7 @@
   max-height: 130px;
 
   @include tab-only {
-    max-height: 160px;
+    max-height: 110px;
   }
   @include pc-only {
     max-height: 218px;
