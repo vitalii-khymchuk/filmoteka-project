@@ -1,10 +1,5 @@
 <div class='film__wrapper'>
-  <img
-    class='film__image'
-    src='{{poster_path}}'
-    alt='{{title}}'
-    loading='lazy'
-  />
+  <img class='film__image' src='{{poster_path}}' alt='{{title}}' loading='lazy' />
   <div class='film__information'>
     <h2 class='film__title'>{{original_title}}</h2>
     <ul>
@@ -45,6 +40,17 @@
       <button type='button' class='film__button js-trailer' data-id='{{id}}'>
         watch trailer
       </button>
+      <div class="watchOnlineButtons">
+        <button class="qualityBtn" data-quality="480p">
+          480
+        </button>
+        <button class="qualityBtn" data-quality="720p">
+          720
+        </button>
+        <button class="qualityBtn" data-quality="1080p">
+          1080
+        </button>
+      </div>
     </div>
   </div>
 </div>
