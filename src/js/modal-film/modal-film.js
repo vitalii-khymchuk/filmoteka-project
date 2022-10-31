@@ -1,10 +1,13 @@
 import modalFilmTpl from '../../templates/mod-film.hbs';
-import { fetchMovieById } from '../localStorageAPI/render-modal-film';
+import { fetchMovieById } from '../modal-film/render-modal-film';
 import { prepareMovieToSaving } from '../localStorageAPI/saveMovie';
 import { refs } from '../refs';
 import { getActualData } from '../markupCard';
+import { initTrailerListener, removeTrailerListener } from '../trailer/trailer';
+import { spinnerPlay, spinnerStop } from '../spinner';
 
 async function onFilmCardClick(event) {
+  spinnerPlay();
   try {
     if (!event.target.closest('.film-card')) {
       return;
@@ -16,13 +19,14 @@ async function onFilmCardClick(event) {
     document.addEventListener('keydown', keyBoardPress);
     onScrollHidden();
 
-    const MovieId = event.target.closest('li').dataset.id;
-    const results = await fetchMovieById(MovieId);
-    console.log([results]);
+    const movieId = event.target.closest('li').dataset.id;
+
+    const results = await fetchMovieById(movieId);
     const newResults = getActualData([results]);
 
     refs.modal.innerHTML = modalFilmTpl(newResults[0]);
-    prepareMovieToSaving(newResults[0]);
+    prepareMovieToSaving(results);
+    initTrailerListener(movieId);
 
     /*     const watchedModalBtn = document.querySelector('.js-watch');
         const queueModalBtn = document.querySelector('.js-queue');
@@ -33,23 +37,23 @@ async function onFilmCardClick(event) {
         youtubeBtn.addEventListener('click', onTrailerBtnClick); */
   } catch (error) {
     console.log(error);
+  } finally {
+    spinnerStop();
   }
 }
 
-/* function openBtnClick() {
-  toggleModal();
-  document.addEventListener('keydown', keyBoardPress);
-} */
 function closeBtnClick() {
   toggleModal();
   document.removeEventListener('keydown', keyBoardPress);
   onScroll();
+  removeTrailerListener();
 }
 
 function keyBoardPress(event) {
   if (event.key === 'Escape') {
     closeBtnClick();
     onScroll();
+    removeTrailerListener();
   }
 }
 
@@ -57,6 +61,7 @@ function onBackdropClick(event) {
   if (event.target === event.currentTarget) {
     closeBtnClick();
     onScroll();
+    removeTrailerListener();
   }
 }
 

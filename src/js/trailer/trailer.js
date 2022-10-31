@@ -18,6 +18,7 @@ let movieId = 49046;
 let player;
 
 export function initTrailerListener() {
+  refs.trailerBtn = document.querySelector('.js-trailer');
   refs.trailerBtn.addEventListener('click', onOpenTrailer);
 }
 
@@ -26,7 +27,7 @@ export function removeTrailerListener() {
 }
 
 //Временная
-refs.trailerBtn1.addEventListener('click', onOpenTrailer);
+// refs.trailerBtn1.addEventListener('click', onOpenTrailer);
 
 function onOpenTrailer() {
   spinnerPlay();

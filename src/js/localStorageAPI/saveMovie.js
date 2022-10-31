@@ -6,10 +6,10 @@ import movieData from '../../data/one.json';
 export { prepareMovieToSaving, getSavedMovies, removeEventListeners };
 
 let currentMovieData = {};
-const refs = {
-  btn1: '',
-  btn2: '',
-};
+// const refs = {
+//   btn1: '',
+//   btn2: '',
+// };
 
 //this function convert and save data to variable in correct format
 function prepareMovieToSaving(data) {

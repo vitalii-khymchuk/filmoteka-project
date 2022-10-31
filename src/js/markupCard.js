@@ -18,19 +18,21 @@ export function getAvailabilityImage(data) {
 }
 
 ///проверяет жанры если > 3  обрезает и добавляет Other
-export function formateGenres(genresCodeArray) {
-  const genresNames = genresCodeArray.map(convertGenre);
+export function formateGenres(genresCodeArray, genresObjectArray) {
+  const genresNames = genresCodeArray
+    ? genresCodeArray.map(convertGenre)
+    : genresObjectArray.map(e => e.name);
   let slicedGenres = [...genresNames];
   if (genresNames.length > 3) {
     slicedGenres = slicedGenres.slice(0, 2);
     slicedGenres.push(' Other');
   }
-  return slicedGenres;
+  return slicedGenres.join(', ');
 }
 function convertGenre(genreCode) {
   const genreElement = genres.find(e => e.id == genreCode);
 
-  return ' ' + genreElement.name;
+  return genreElement.name;
 }
 
 /////////Обрезает дату релиза
@@ -42,25 +44,31 @@ export function sliceDateRelease(data) {
 
 /////// получает данные с бека и собирает все вместе для рендера
 export function getActualData(results) {
-  console.log(results);
   return results.map(
     ({
       poster_path,
       genre_ids,
+      genres,
       release_date,
       title,
       id,
       vote_average,
+      vote_count,
+      original_title,
       overview,
+      popularity,
     } = results) => {
       let newResult = {
         id: id,
         poster_path: getAvailabilityImage(poster_path),
-        genre_ids: formateGenres(genre_ids),
+        genre_ids: formateGenres(genre_ids, genres),
         release_date: sliceDateRelease(release_date),
         title: title,
         vote_average: vote_averageRound(vote_average),
         overview: overview,
+        original_title: original_title,
+        vote_count: vote_count,
+        popularity: vote_averageRound(popularity),
       };
       return newResult;
     }
