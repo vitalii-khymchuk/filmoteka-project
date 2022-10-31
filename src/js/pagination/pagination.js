@@ -40,6 +40,7 @@ export function initPagination(data, callback) {
     const currentPage = event.page;
 
     themovie.page = currentPage;
+    localStorage.setItem('page', currentPage);
     callback();
   });
 }

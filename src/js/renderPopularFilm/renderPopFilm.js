@@ -29,14 +29,6 @@ export class ThemovieAPI {
   set page(newPage) {
     this.#page = newPage;
   }
-
-  incrementPage() {
-    this.#page += 1;
-  }
-
-  decrementPage() {
-    this.#page = 1;
-  }
 }
 /////// /////// /////// /////// ///////
 
@@ -45,6 +37,8 @@ export const themovie = new ThemovieAPI();
 export async function getPopularFilms() {
   try {
     spinnerPlay();
+
+    themovie.page = localStorage.getItem('page');
     const parced = JSON.stringify(genres);
     const genresFilmData = JSON.parse(parced);
 
