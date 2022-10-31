@@ -1,6 +1,6 @@
 import { themovie, getPopularFilms } from '../renderPopularFilm/renderPopFilm';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+import '../pagination/tui-pagination.css';
 
 const container = document.getElementById('pagination');
 export let pagination;
