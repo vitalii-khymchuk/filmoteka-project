@@ -163,13 +163,14 @@
 .film__button__wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
+  justify-content: space-between;
 
   @include tab-only {
     gap: 15px;
   }
   @include pc-only {
-    flex-wrap: nowrap;
+    //flex-wrap: nowrap;
   }
 }
 
@@ -192,6 +193,19 @@
   @include tab-only {
     width: 125px;
   }
+  @include pc-only {
+    width: 136px;
+  }
+}
+
+.watch-trailer {
+  width: 92px;
+  height: 44px;
+
+  @include tab-only {
+    width: 125px;
+  }
+
   @include pc-only {
     width: 136px;
   }
@@ -223,4 +237,39 @@
 
 .film__trailer__text {
   text-transform: uppercase;
+}
+
+.watchOnlineButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+
+  @include tab-only {
+    gap: 8px;
+  }
+
+  @include pc-only {
+    gap: 15px;
+    justify-content: flex-start;
+  }
+}
+
+.qualityBtn {
+  background-color: $secondaryTextColor;
+  border: 1px solid $mainTextColor;
+  border-radius: 5px;
+  cursor: pointer;
+
+  @include pc-only {
+    padding: 12px;
+    justify-content: flex-start;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $accentColor;
+    color: $secondaryTextColor;
+    border: 1px solid $accentColor;
+  }
 }
