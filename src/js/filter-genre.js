@@ -1,35 +1,20 @@
-// let genreFilm = '';
+document.querySelector('.header__form').addEventListener('submit', event => {
+  // event.preventDefault();
+  const form = document.querySelector('.header__form');
 
-// function
+  console.dir(form.elements.genre.value);
+  console.dir(form.elements.sort.value);
+  console.dir(form.elements.yearStart.value);
+  console.dir(form.elements.yearEnd.value);
+});
 
-// function app() {
-//   const buttons = document.querySelectorAll('.header__categories-btn');
-//   const cards = document.querySelectorAll('.film-card');
+for (let yearStart = 1920; yearStart <= 2035; yearStart++) {
+  let options = document.createElement('OPTION');
+  document.getElementById('yearStart').appendChild(options).innerHTML =
+    yearStart;
+}
 
-// function filter(category, items) {
-//   console.log(items);
-//   items.forEach(item => {
-//     //если инфа из класса film-card__genre содержит data-filter, то показывать картточку
-
-//     const textCategory = span.querySelectorAll('.film-card__genre');
-
-//     const isItemFiltered = !item.textCategory.textContent.includes(category);
-//     const isShowAll = category.toLowerCase() === 'all';
-//     // console.log(textCategory, isItemFiltered, isShowAll);
-//     if (isItemFiltered && !isShowAll) {
-//       item.classList.add('hide');
-//     } else {
-//       item.classList.remove('hide');
-//     }
-//   });
-// }
-
-//   buttons.forEach(button => {
-//     button.addEventListener('click', () => {
-//       genreFilm = button.dataset.filter;
-
-//     });
-//   });
-// }
-
-// app();
+for (let yearEnd = 1920; yearEnd <= 2035; yearEnd++) {
+  let options = document.createElement('OPTION');
+  document.getElementById('yearEnd').appendChild(options).innerHTML = yearEnd;
+}
