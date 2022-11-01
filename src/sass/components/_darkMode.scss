@@ -36,11 +36,11 @@ input:checked[type='checkbox'] ~ .check {
 }
 
 .check:before {
-  content: '';
+  content: '☀';
   position: absolute;
   top: 1.5px;
   left: 4px;
-  background-color: #fff;
+  // background-color: #fff;
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -52,7 +52,7 @@ input:checked[type='checkbox'] ~ .check:before {
 }
 
 .check:after {
-  content: '';
+  content: '🌑';
   position: absolute;
   top: 1.5px;
   right: 4px;
