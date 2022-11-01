@@ -96,7 +96,7 @@ function changeBtnName(libName) {
 //get data from local storage, add new movie and save new data
 function saveMovie(libName) {
   const savedMovies = getSavedMovies(libName);
-  savedMovies.push(currentMovieData);
+  savedMovies.unshift(currentMovieData);
   rewriteLocStorage(libName, savedMovies);
   Notify.info(
     `"${currentMovieData.original_title}" has added to your ${libName}`
