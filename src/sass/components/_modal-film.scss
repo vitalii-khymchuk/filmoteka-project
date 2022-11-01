@@ -1,6 +1,6 @@
 .modal {
   position: relative;
-  width: 280px;
+  width: 320px;
   height: 1028px;
   padding: 40px 20px;
   top: 20px;
@@ -19,13 +19,13 @@
   @include tab-only {
     width: 704px;
     height: 605px;
-    padding: 40px 36px;
+    padding: 30px 20px;
   }
 
   @include pc-only {
     width: 806px;
     height: 615px;
-    padding: 40px 12px;
+    padding: 40px 15px;
   }
 }
 
@@ -60,7 +60,7 @@
   @include tab-only {
     display: flex;
     flex-wrap: nowrap;
-    gap: 34px;
+    gap: 20px;
   }
   @include pc-only {
     display: flex;
@@ -74,8 +74,8 @@
   margin-left: auto;
   display: block;
 
-  max-width: 240px;
-  height: 357px;
+  min-width: 280px;
+  height: 390px;
   border-radius: 5px;
   margin-bottom: 20px;
   @include tab-only {
@@ -84,16 +84,23 @@
     margin: 0;
   }
   @include pc-only {
-    max-width: 375px;
+    min-width: 340px;
     height: 478px;
     margin: 0;
   }
 }
 
 .film__information {
+  width: 280px;
   text-align: start;
   @include tab-only {
     max-height: 472px;
+    width: 100%;
+  }
+
+  @include pc-only {
+    max-height: 472px;
+    width: 412px;
   }
 }
 
@@ -154,10 +161,10 @@
   max-height: 130px;
 
   @include tab-only {
-    max-height: 110px;
+    max-height: 137px;
   }
   @include pc-only {
-    max-height: 218px;
+    max-height: 130px;
   }
 }
 .film__button__wrapper {
@@ -167,15 +174,16 @@
   justify-content: space-between;
 
   @include tab-only {
-    gap: 15px;
+    gap: 14px;
+    flex-wrap: nowrap;
   }
   @include pc-only {
-    //flex-wrap: nowrap;
+    flex-wrap: nowrap;
   }
 }
 
 .film__button {
-  width: 110px;
+  width: 135px;
   height: 44px;
   text-align: center;
   text-transform: uppercase;
@@ -191,23 +199,10 @@
     border: 1px solid $accentColor;
   }
   @include tab-only {
-    width: 125px;
+    width: 110px;
   }
   @include pc-only {
-    width: 136px;
-  }
-}
-
-.watch-trailer {
-  width: 92px;
-  height: 44px;
-
-  @include tab-only {
-    width: 125px;
-  }
-
-  @include pc-only {
-    width: 136px;
+    width: 130px;
   }
 }
 
@@ -244,6 +239,10 @@
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 10px;
+  position: relative;
+  border: 1px solid $mainTextColor;
+  border-radius: 5px;
+  margin-top: 25px;
 
   @include tab-only {
     gap: 8px;
@@ -251,7 +250,26 @@
 
   @include pc-only {
     gap: 15px;
-    justify-content: flex-start;
+  }
+}
+
+.watch-online__text {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2px 20px;
+  position: absolute;
+  top: -20%;
+  background-color: $secondaryBgColor;
+}
+
+.watch-online__wrapper {
+  display: flex;
+  padding: 10px;
+  flex-wrap: nowrap;
+  gap: 55px;
+
+  @include pc-only {
+    gap: 55px;
   }
 }
 
@@ -260,10 +278,14 @@
   border: 1px solid $mainTextColor;
   border-radius: 5px;
   cursor: pointer;
+  padding: 12px;
+
+  @include tab-only {
+    padding: 12px 20px;
+  }
 
   @include pc-only {
-    padding: 12px;
-    justify-content: flex-start;
+    padding: 12px 30px;
   }
 
   &:hover,

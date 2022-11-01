@@ -36,3 +36,9 @@ table.torrentTable thead {
     color: #ffffff;
   }
 }
+
+.ac-header.ac-trigger {
+  @include mob-only {
+    min-width: 280px;
+  }
+}
