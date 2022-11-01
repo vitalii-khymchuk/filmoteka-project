@@ -5,17 +5,20 @@ import { spinnerPlay, spinnerStop } from './spinner';
 import { ThemovieAPI } from './renderPopularFilm/APIclass';
 import { initPagination } from './pagination/pagination';
 import { refs } from './refs';
+import { initRestore } from './restore/restore';
 
 export let movieSearch;
 
 export function initSearchMovie() {
   movieSearch = new ThemovieAPI('search/movie?');
   refs.searchForm.addEventListener('submit', onSearchSubmit);
+  initRestore();
 }
 
 async function onSearchSubmit(e) {
   e.preventDefault();
   const movieName = e.target.elements.searchQuery.value;
+  saveToLocalStorage(movieName);
   movieSearch.params = `&query=${movieName}`;
   if (movieName !== '') {
     updateItems();
@@ -24,8 +27,9 @@ async function onSearchSubmit(e) {
   }
 }
 
-async function updateItems() {
+export async function updateItems() {
   try {
+    getPageFromLocalStorage();
     clearMarkup();
     spinnerPlay();
     const data = await movieSearch.getFilms();
@@ -46,4 +50,20 @@ async function updateItems() {
 
 function clearMarkup() {
   refs.movieCards.innerHTML = '';
+}
+
+function saveToLocalStorage(movieName) {
+  localStorage.setItem('action', 'search');
+  localStorage.setItem('query', `&query=${movieName}`);
+  localStorage.setItem('page', 1);
+}
+
+function getPageFromLocalStorage() {
+  if (localStorage.getItem('page')) {
+    movieSearch.page = localStorage.getItem('page');
+  }
+}
+
+export function setMovieSearch(data) {
+  movieSearch.params = data;
 }
