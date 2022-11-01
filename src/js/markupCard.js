@@ -91,6 +91,7 @@ export function createMarkupCard(results) {
 }
 
 export function createAndRenderMarkup(data) {
+  console.log(data);
   let newData = getActualData(data);
   createMarkupCard(newData);
 }

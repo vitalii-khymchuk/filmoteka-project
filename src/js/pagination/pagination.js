@@ -1,4 +1,5 @@
-import { themovie, getPopularFilms } from '../renderPopularFilm/renderPopFilm';
+import { themovie } from '../renderPopularFilm/renderPopFilm';
+import { movieSearch } from '../searchMovieByName';
 import Pagination from 'tui-pagination';
 import '../pagination/tui-pagination.css';
 
@@ -40,6 +41,7 @@ export function initPagination(data, callback) {
     const currentPage = event.page;
 
     themovie.page = currentPage;
+    movieSearch.page = currentPage;
     localStorage.setItem('page', currentPage);
     callback();
   });
