@@ -4,6 +4,7 @@ import { createAndRenderMarkup } from './js/markupCard';
 import { initModal } from './js/modal-film/modal-film';
 import './js/advBlock';
 import './js/buttonUp';
+import './js/footer-modal';
 
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);

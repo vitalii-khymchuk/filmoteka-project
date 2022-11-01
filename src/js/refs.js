@@ -14,6 +14,9 @@ export const refs = {
   body: document.querySelector('body'),
   spinner: document.querySelector('.js-spinner'),
   load: document.querySelector('[data-load]'),
+  openFooterModalBtn: document.querySelector('[team-modal-open]'),
+  closeFooterModalBtn: document.querySelector('.js-close-footer'),
+  backdropModalFooter: document.querySelector('.js-backdrop-footer'),
   body: document.querySelector('body'),
   logo: document.querySelector('.header-nav__link'),
 };
