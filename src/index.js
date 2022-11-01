@@ -7,6 +7,7 @@ import './js/searchMovieByName';
 import './js/advBlock';
 import './js/buttonUp';
 import './js/filter-genre';
+import './js/darkMode';
 
 initModal();
 initSearchMovie();
