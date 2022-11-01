@@ -6,18 +6,22 @@ import { spinnerPlay, spinnerStop } from '../spinner';
 import { initPagination } from '../pagination/pagination';
 import { refs } from '../refs';
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+
+//api.themoviedb.org/3/discover/movie?api_key=<<api_key>>&language=en-US&sort_by=popularity.desc
 
 export class ThemovieAPI {
-  #api = 'c6849c57578619bd16dafe22e211e348';
+  #searchParam = 'discover/movie?';
+  #api = 'api_key=c6849c57578619bd16dafe22e211e348';
+  #lang = '&language=en-US';
   #page = 1;
-  #trending = 'trending';
-  #movie = 'movie';
+  // #trending = 'trending';
+  // #movie = 'movie';
 
-  async getFilms() {
-    const urlAXIOS = `${this.#trending}/${this.#movie}/day?api_key=${
-      this.#api
-    }&page=${this.#page}`;
+  async getFilms(params = '&sort_by=popularity.desc') {
+    const urlAXIOS = `${this.#searchParam}${this.#api}${
+      this.#lang
+    }${params}&page=${this.#page}`;
 
     const { data } = await axios.get(urlAXIOS);
     return data;
@@ -35,7 +39,7 @@ export class ThemovieAPI {
 
 export const themovie = new ThemovieAPI();
 
-export async function getPopularFilms() {
+export async function getPopularFilms(params) {
   try {
     spinnerPlay();
     if (localStorage.getItem('page')) {
@@ -45,7 +49,7 @@ export async function getPopularFilms() {
     const parced = JSON.stringify(genres);
     const genresFilmData = JSON.parse(parced);
 
-    const data = await themovie.getFilms();
+    const data = await themovie.getFilms(params);
     const { results } = data;
 
     initPagination(data, getPopularFilms);
