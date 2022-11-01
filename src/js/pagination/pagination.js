@@ -1,10 +1,11 @@
+import { themovie, getPopularFilms } from '../renderPopularFilm/renderPopFilm';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+import '../pagination/tui-pagination.css';
 
 const container = document.getElementById('pagination');
-let pagination;
+export let pagination;
 
-export function initPagination(data) {
+export function initPagination(data, callback) {
   const { page, results, total_results } = data;
 
   const options = {
@@ -13,8 +14,33 @@ export function initPagination(data) {
     visiblePages: 5,
     page: page,
     centerAlign: false,
+    template: {
+      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+      currentPage:
+        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+      moveButton:
+        '<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</a>',
+      disabledMoveButton:
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</span>',
+      moreButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}">' +
+        '<span class="tui-ico-ellip">...</span>' +
+        '</a>',
+    },
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
   };
   pagination = new Pagination(container, options);
+
+  pagination.on('afterMove', event => {
+    const currentPage = event.page;
+
+    themovie.page = currentPage;
+    localStorage.setItem('page', currentPage);
+    callback();
+  });
 }

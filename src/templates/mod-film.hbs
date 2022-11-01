@@ -42,9 +42,24 @@
       <button type='button' class='film__button js-queue' data-id='{{id}}'>
         Add to queue
       </button>
-      <button type='button' class='film__button js-trailer' data-id='{{id}}'>
+      <button
+        type='button'
+        class='film__button watch-trailer js-trailer'
+        data-id='{{id}}'
+      >
         watch trailer
       </button>
+      <div class='watchOnlineButtons'>
+        <button class='qualityBtn' data-quality='480p'>
+          480
+        </button>
+        <button class='qualityBtn' data-quality='720p'>
+          720
+        </button>
+        <button class='qualityBtn' data-quality='1080p'>
+          1080
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -1,15 +1,11 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { makeQueryForTorrents } from '../torrentAPI/getTorrentLinks';
+import { prepareToStreaming } from '../torrentAPI/playMovie';
 import { refs } from '../refs';
 import { createAndRenderMarkup } from '../markupCard';
-import movieData from '../../data/one.json';
 export { prepareMovieToSaving, getSavedMovies, removeEventListeners };
 
 let currentMovieData = {};
-// const refs = {
-//   btn1: '',
-//   btn2: '',
-// };
 
 //this function convert and save data to variable in correct format
 function prepareMovieToSaving(data) {
@@ -54,6 +50,7 @@ function prepareMovieToSaving(data) {
   changeBtnName('watched');
   changeBtnName('queue');
   makeQueryForTorrents(currentMovieData.original_title);
+  prepareToStreaming(currentMovieData.original_title);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -99,7 +96,7 @@ function changeBtnName(libName) {
 //get data from local storage, add new movie and save new data
 function saveMovie(libName) {
   const savedMovies = getSavedMovies(libName);
-  savedMovies.push(currentMovieData);
+  savedMovies.unshift(currentMovieData);
   rewriteLocStorage(libName, savedMovies);
   Notify.info(
     `"${currentMovieData.original_title}" has added to your ${libName}`

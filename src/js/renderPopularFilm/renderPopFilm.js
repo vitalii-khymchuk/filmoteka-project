@@ -3,6 +3,8 @@ import * as genres from '/src/data/genres.json';
 import { createAndRenderMarkup } from '../markupCard';
 import { initPagination } from '../pagination/pagination';
 import { spinnerPlay, spinnerStop } from '../spinner';
+import { initPagination } from '../pagination/pagination';
+import { refs } from '../refs';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
@@ -28,29 +30,25 @@ export class ThemovieAPI {
   set page(newPage) {
     this.#page = newPage;
   }
-
-  incrementPage() {
-    this.#page += 1;
-  }
-
-  decrementPage() {
-    this.#page = 1;
-  }
 }
 /////// /////// /////// /////// ///////
 
-const themovieApi = new ThemovieAPI();
+export const themovie = new ThemovieAPI();
 
-async function getPopularFilms() {
+export async function getPopularFilms() {
   try {
     spinnerPlay();
+    if (localStorage.getItem('page')) {
+      themovie.page = localStorage.getItem('page');
+    }
+
     const parced = JSON.stringify(genres);
     const genresFilmData = JSON.parse(parced);
 
-    const data = await themovieApi.getFilms();
+    const data = await themovie.getFilms();
     const { results } = data;
 
-    initPagination(data);
+    initPagination(data, getPopularFilms);
     createAndRenderMarkup(results);
 
     //
@@ -62,3 +60,9 @@ async function getPopularFilms() {
 }
 
 getPopularFilms();
+
+refs.logo.addEventListener('click', clearLocalStorage);
+
+function clearLocalStorage() {
+  localStorage.removeItem('page');
+}

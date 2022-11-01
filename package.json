@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://vitalii-khymchuk.github.io/filmoteka-project",
   "scripts": {
-    "start": "parcel src/pages/index.html",
+    "start": "parcel src/pages/index.html --open",
     "build": "parcel build src/pages/*.html --public-url /filmoteka-project/"
   },
   "repository": {
