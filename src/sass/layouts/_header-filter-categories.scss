@@ -1,0 +1,52 @@
+.header__categories {
+  display: flex;
+  justify-content: start;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 10px;
+  color: white;
+  padding-top: 50px;
+}
+
+.header__categories-btn:not(last-child) {
+  margin-right: 30px;
+}
+
+.header__categories-btn {
+  color: currentColor;
+  background-color: transparent;
+  border: none;
+  transition: color 300ms ease-in-out;
+  transition: border 300ms ease-in-out;
+}
+
+.header__categories-btn:hover,
+.header__categories-btn:focus {
+  color: $accentColor;
+  border: 1px solid $accentColor;
+  border-radius: 5px;
+  background-color: #ffffff16;
+}
+
+// .anime {
+//   transform: scale(0);
+//   opacity: 0;
+// }
+
+.hide {
+  display: none;
+}
+
+// @keyframes hide {
+//   0% {
+//     visibility: visible;
+//     height: 200px;
+//   }
+//   100% {
+//     visibility: hidden;
+//     width: 0;
+//     height: 0;
+//     min-width: 0;
+//     font-size: 0;
+//   }
+// } ;
