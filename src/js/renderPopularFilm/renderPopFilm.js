@@ -15,13 +15,14 @@ export class ThemovieAPI {
   #api = 'api_key=c6849c57578619bd16dafe22e211e348';
   #lang = '&language=en-US';
   #page = 1;
+  #params = '&sort_by=popularity.desc';
   // #trending = 'trending';
   // #movie = 'movie';
 
-  async getFilms(params = '&sort_by=popularity.desc') {
-    const urlAXIOS = `${this.#searchParam}${this.#api}${
-      this.#lang
-    }${params}&page=${this.#page}`;
+  async getFilms() {
+    const urlAXIOS = `${this.#searchParam}${this.#api}${this.#lang}${
+      this.#params
+    }&page=${this.#page}`;
 
     const { data } = await axios.get(urlAXIOS);
     return data;
@@ -41,6 +42,14 @@ export class ThemovieAPI {
 
   set searchParam(newSearchParam) {
     this.#searchParam = newSearchParam;
+  }
+
+  get params() {
+    return this.#params;
+  }
+
+  set params(newParams) {
+    this.#params = newParams;
   }
 }
 /////// /////// /////// /////// ///////
