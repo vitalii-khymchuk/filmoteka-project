@@ -1,3 +1,5 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { spinnerPlay, spinnerStop } from '../spinner';
 import axios from 'axios';
 import { refs } from '../refs';
 import { initTorrentPlayer } from './initTorrentPlayer';
@@ -26,10 +28,10 @@ function getMagnetLink(quality) {
 }
 
 function responseHandle({ data }) {
-  console.log(data);
   const magnetLink = data.magnet_link;
   createVideoPlayer();
   initTorrentPlayer(magnetLink);
+  spinnerStop();
 }
 
 function createVideoPlayer() {
@@ -63,6 +65,10 @@ function onWatchBtnClick(evt) {
   refs.movieContainer.classList.remove('is-hidden');
   refs.modal.classList.add('is-hidden');
   getMagnetLink(quality);
+  spinnerPlay();
+  Notify.info(
+    'Movie is on the way to you. It can take some time. Wait a bit...'
+  );
 }
 
 function onCloseMovieBtn(evt) {
