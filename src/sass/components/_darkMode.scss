@@ -7,8 +7,17 @@
   color: white;
 }
 
-.darkmode--activated .avd__close-btn {
+.darkmode--activated .avd__close-btn,
+.darkmode--activated .modal__close-btn {
   fill: white;
+}
+
+// модалка
+.darkmode--activated .modal {
+  background-color: black;
+}
+.darkmode--activated .film__title {
+  color: #ff6b08;
 }
 
 input[type='checkbox'] {
