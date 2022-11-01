@@ -19,9 +19,8 @@
 
 .card-set__item {
   width: 760px;
-  background-size: cover;
-  flex-shrink: 1;
-
+  
+  
   @include tab-only {
     width: 336px;
   }

@@ -10,6 +10,8 @@
 @import './components/backdrop';
 @import './components/scrollbar';
 
+// @import './components/tui-pagination';
+
 @import './components/container';
 @import './components/cardset';
 
@@ -22,6 +24,7 @@
 @import './layouts/footer';
 @import './layouts/torrent-table';
 @import './layouts/footer-modal';
+@import './layouts/videoPlayer';
 
 @import './components/spinner';
 @import './components/advBlock';

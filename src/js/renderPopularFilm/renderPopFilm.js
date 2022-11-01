@@ -4,6 +4,7 @@ import { createAndRenderMarkup } from '../markupCard';
 import { initPagination } from '../pagination/pagination';
 import { spinnerPlay, spinnerStop } from '../spinner';
 import { initPagination } from '../pagination/pagination';
+import { refs } from '../refs';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
@@ -29,14 +30,6 @@ export class ThemovieAPI {
   set page(newPage) {
     this.#page = newPage;
   }
-
-  incrementPage() {
-    this.#page += 1;
-  }
-
-  decrementPage() {
-    this.#page = 1;
-  }
 }
 /////// /////// /////// /////// ///////
 
@@ -45,6 +38,10 @@ export const themovie = new ThemovieAPI();
 export async function getPopularFilms() {
   try {
     spinnerPlay();
+    if (localStorage.getItem('page')) {
+      themovie.page = localStorage.getItem('page');
+    }
+
     const parced = JSON.stringify(genres);
     const genresFilmData = JSON.parse(parced);
 
@@ -63,3 +60,9 @@ export async function getPopularFilms() {
 }
 
 getPopularFilms();
+
+refs.logo.addEventListener('click', clearLocalStorage);
+
+function clearLocalStorage() {
+  localStorage.removeItem('page');
+}

@@ -24,7 +24,7 @@ async function onFilmCardClick(event) {
     const results = await fetchMovieById(movieId);
     const newResults = getActualData([results]);
 
-    refs.modal.innerHTML = modalFilmTpl(newResults[0]);
+    refs.modalBody.innerHTML = modalFilmTpl(newResults[0]);
     prepareMovieToSaving(results);
     initTrailerListener(movieId);
   } catch (error) {
@@ -82,5 +82,5 @@ function onScrollHidden() {
 }
 
 function onClearModalWindow() {
-  refs.modal.innerHTML = '';
+  refs.modalBody.innerHTML = '';
 }

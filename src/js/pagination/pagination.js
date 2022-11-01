@@ -1,6 +1,6 @@
 import { themovie, getPopularFilms } from '../renderPopularFilm/renderPopFilm';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+import '../pagination/tui-pagination.css';
 
 const container = document.getElementById('pagination');
 export let pagination;
@@ -40,6 +40,7 @@ export function initPagination(data, callback) {
     const currentPage = event.page;
 
     themovie.page = currentPage;
+    localStorage.setItem('page', currentPage);
     callback();
   });
 }

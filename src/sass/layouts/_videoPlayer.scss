@@ -1,0 +1,11 @@
+.movieContainer.backdrop {
+  background-color: transparent;
+  z-index: 99999999999999;
+}
+
+.webtor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
