@@ -34,6 +34,14 @@ export class ThemovieAPI {
   set page(newPage) {
     this.#page = newPage;
   }
+
+  get searchParam() {
+    return this.#searchParam;
+  }
+
+  set searchParam(newSearchParam) {
+    this.#searchParam = newSearchParam;
+  }
 }
 /////// /////// /////// /////// ///////
 
