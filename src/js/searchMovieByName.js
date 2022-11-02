@@ -19,7 +19,7 @@ async function onSearchSubmit(e) {
   e.preventDefault();
   const movieName = e.target.elements.searchQuery.value;
   saveToLocalStorage(movieName);
-  movieSearch.params = `&query=${movieName}`;
+  setMovieSearch(movieName);
   if (movieName !== '') {
     updateItems();
   } else {
@@ -64,6 +64,6 @@ function getPageFromLocalStorage() {
   }
 }
 
-export function setMovieSearch(data) {
-  movieSearch.params = data;
+export function setMovieSearch(movieName) {
+  movieSearch.params = `&query=${movieName}`;
 }
