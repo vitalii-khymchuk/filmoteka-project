@@ -29,9 +29,20 @@ function getMagnetLink(quality) {
 
 function responseHandle({ data }) {
   const magnetLink = data.magnet_link;
+  if (!magnetLink) {
+    movieNotFound();
+    return;
+  }
   createVideoPlayer();
   initTorrentPlayer(magnetLink);
   spinnerStop();
+}
+
+function movieNotFound(error) {
+  spinnerStop();
+  Notify.info(
+    'Sorry, but this movie not available with this quality. Try to check another.'
+  );
 }
 
 function createVideoPlayer() {

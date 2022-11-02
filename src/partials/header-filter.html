@@ -1,0 +1,160 @@
+<!-- filters -->
+
+<form class="header__form" id="header__form">
+  <div class="header__form-genres">
+    <label for="genre" class="header__form-text">Сhoose a genre:</label>
+    <select name="genre" id="genre" class="header__form-choice">
+      <option value="28" class="header__form-genres-name" data-filter="28">
+        Action
+      </option>
+      <option value="12" class="header__form-genres-name" data-filter="12">
+        Adventure
+      </option>
+      <option value="16" class="header__form-genres-name" data-filter="16">
+        Animation
+      </option>
+      <option value="35" class="header__form-genres-name" data-filter="35">
+        Comedy
+      </option>
+      <option value="80" class="header__form-genres-name" data-filter="35">
+        Crime
+      </option>
+      <option value="99" class="header__form-genres-name" data-filter="99">
+        Documentary
+      </option>
+      <option value="18" class="header__form-genres-name" data-filter="18">
+        Drama
+      </option>
+      <option value="10751" class="header__form-genres-name" data-filter="18">
+        Family
+      </option>
+      <option value="14" class="header__form-genres-name" data-filter="18">
+        Fantasy
+      </option>
+      <option value="36" class="header__form-genres-name" data-filter="18">
+        History
+      </option>
+      <option value="36" class="header__form-genres-name" data-filter="18">
+        History
+      </option>
+      <option value="27" class="header__form-genres-name" data-filter="18">
+        Horror
+      </option>
+      <option value="10402" class="header__form-genres-name" data-filter="18">
+        Music
+      </option>
+      <option value="9648" class="header__form-genres-name" data-filter="18">
+        Mystery
+      </option>
+      <option value="10749" class="header__form-genres-name" data-filter="18">
+        Romance
+      </option>
+      <option value="878" class="header__form-genres-name" data-filter="18">
+        Science Fiction
+      </option>
+      <option value="10770" class="header__form-genres-name" data-filter="18">
+        TV Movie
+      </option>
+      <option value="53" class="header__form-genres-name" data-filter="53">
+        Thriller
+      </option>
+      <option value="10752" class="header__form-genres-name" data-filter="53">
+        War
+      </option>
+      <option value="37" class="header__form-genres-name" data-filter="53">
+        Western
+      </option>
+    </select>
+  </div>
+
+  <div class="header__form-sorts">
+    <label for="sort" class="header__form-text">Sort by:</label>
+    <select name="sort" id="sort" class="header__form-choice">
+      <option
+        value="popularity.asc"
+        class="header__form-sort-by"
+        data-filter="ratingUp"
+      >
+        RatingUp
+      </option>
+      <option
+        value="popularity.desc"
+        class="header__form-sort-by"
+        data-filter="ratingDown"
+      >
+        RatingDown
+      </option>
+      <option
+        value="release_date.desc"
+        class="header__form-sort-by"
+        data-filter="firstNew"
+      >
+        First new
+      </option>
+      <option
+        value="release_date.asc"
+        class="header__form-sort-by"
+        data-filter="firstOld"
+      >
+        First old
+      </option>
+      <option
+        value="revenue.asc"
+        class="header__form-sort-by"
+        data-filter="firstOld"
+      >
+        RevenueUp
+      </option>
+      <option
+        value="revenue.desc"
+        class="header__form-sort-by"
+        data-filter="firstOld"
+      >
+        RevenueDown
+      </option>
+      <option
+        value="vote_count.asc"
+        class="header__form-sort-by"
+        data-filter="firstOld"
+      >
+        Vote count Up
+      </option>
+      <option
+        value="vote_count.desc"
+        class="header__form-sort-by"
+        data-filter="firstOld"
+      >
+        Vote count Down
+      </option>
+    </select>
+  </div>
+
+  <div class="header__form-release">
+    <label for="yearStart" class="header__form-text">Select year: from</label>
+    <select
+      id="yearStart"
+      name="yearStart"
+      class="header__form-choice"
+      data-filter="yearStart"
+    >
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+    </select>
+    <label for="yearEnd" class="header__form-text">to</label>
+    <select
+      id="yearEnd"
+      name="yearEnd"
+      class="header__form-choice"
+      data-filter="yearEnd"
+    >
+      <option value="2022">2022</option>
+      <option value="2021">2021</option>
+      <option value="2020">2020</option>
+      <option value="2019">2019</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn header__form-btn">Search</button>
+</form>

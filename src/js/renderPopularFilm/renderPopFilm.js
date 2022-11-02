@@ -34,10 +34,12 @@ export async function getPopularFilms(params) {
   }
 }
 
-getPopularFilms();
+// getPopularFilms();
 
-refs.logo.addEventListener('click', clearLocalStorage);
+refs.logo.addEventListener('click', resetLocalStorage);
 
-function clearLocalStorage() {
-  localStorage.removeItem('page');
+function resetLocalStorage() {
+  localStorage.setItem('action', 'popular');
+  localStorage.setItem('page', 1);
+  localStorage.setItem('query', '');
 }

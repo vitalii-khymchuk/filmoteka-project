@@ -14,10 +14,12 @@
         <li class="header-nav__item">
           <a href="./library.html" class="header-nav__link">my library</a>
         </li>
-        <label>
+       <li>
+         <label>
           <input id="input" type="checkbox" />
           <span class="check"></span>
         </label>
+       </li>
       </ul>
     </nav>
     <div class="header__search">
@@ -36,101 +38,6 @@
         </button>
       </form>
     </div>
-
-    <div class="header__filters">
-      <label for="genre" class="header__filters-text">Сhoose a genre:</label>
-      <select name="genre" id="genre" class="header__filters-genre">
-        <option
-          value="action"
-          class="header__filters-genre-name"
-          data-filter="28"
-        >
-          Action
-        </option>
-        <option
-          value="adventure"
-          class="header__filters-genre-name"
-          data-filter="12"
-        >
-          Adventure
-        </option>
-        <option
-          value="animation"
-          class="header__filters-genre-name"
-          data-filter="16"
-        >
-          Animation
-        </option>
-        <option
-          value="comedy"
-          class="header__filters-genre-name"
-          data-filter="35"
-        >
-          Comedy
-        </option>
-        <option
-          value="documentary"
-          class="header__filters-genre-name"
-          data-filter="99"
-        >
-          Documentary
-        </option>
-        <option
-          value="drama"
-          class="header__filters-genre-name"
-          data-filter="18"
-        >
-          Drama
-        </option>
-        <option
-          value="thriller"
-          class="header__filters-genre-name"
-          data-filter="53"
-        >
-          Thriller
-        </option>
-      </select>
-
-      <div class="header__filter-rating">
-        <button type="button" class="btn header__rating-btn">Rating Up</button>
-        <button type="button" class="btn header__rating-btn">
-          Rating Down
-        </button>
-      </div>
-
-      <div class="header__filter-release">
-        <label
-          for="release-year"
-          id="release-year"
-          class="header__filter-release-year"
-          >Select release year:
-          <span class="header__filter-release-text">from</span>
-        </label>
-        <input
-          type="number"
-          name="release-year"
-          min="1900"
-          max="2050"
-          value="1990"
-          class="header__filter-release-year-number"
-        />
-        <label
-          for="release-year"
-          id="release-year"
-          class="header__filter-release-year"
-          ><span class="header__filter-release-text">to</span></label
-        >
-        <input
-          type="number"
-          name="release-year"
-          min="1900"
-          max="2050"
-          value="2022"
-          class="header__filter-release-year-number"
-        />
-      </div>
-
-      <button type="submit" class="btn header__filters-btn">Search</button>
-    </div>
+    <include src="./partials/header-filter.html"></include>
   </div>
 </header>

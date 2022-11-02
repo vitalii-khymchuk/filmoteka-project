@@ -1,5 +1,4 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import axios from 'axios';
 import { createAndRenderMarkup } from './markupCard';
 import { spinnerPlay, spinnerStop } from './spinner';
 import { ThemovieAPI } from './renderPopularFilm/APIclass';
@@ -16,7 +15,8 @@ export function initSearchMovie() {
 async function onSearchSubmit(e) {
   e.preventDefault();
   const movieName = e.target.elements.searchQuery.value;
-  movieSearch.params = `&query=${movieName}`;
+  saveToLocalStorage(movieName);
+  setMovieSearch(movieName);
   if (movieName !== '') {
     updateItems();
   } else {
@@ -24,18 +24,18 @@ async function onSearchSubmit(e) {
   }
 }
 
-async function updateItems() {
+export async function updateItems() {
   try {
+    getPageFromLocalStorage();
     clearMarkup();
     spinnerPlay();
     const data = await movieSearch.getFilms();
     spinnerStop();
-    if (data.results.length !== 0) {
-      createAndRenderMarkup(data.results);
+    createAndRenderMarkup(data.results);
+    if (data.results[0]) {
       initPagination(data, updateItems);
     } else {
-      createMarkupCard([]);
-      Notify.failure(
+      Notify.info(
         'Search result not successful. Enter the correct movie name and try again'
       );
     }
@@ -46,4 +46,20 @@ async function updateItems() {
 
 function clearMarkup() {
   refs.movieCards.innerHTML = '';
+}
+
+function saveToLocalStorage(movieName) {
+  localStorage.setItem('action', 'search');
+  localStorage.setItem('query', `&query=${movieName}`);
+  localStorage.setItem('page', 1);
+}
+
+function getPageFromLocalStorage() {
+  if (localStorage.getItem('page')) {
+    movieSearch.page = localStorage.getItem('page');
+  }
+}
+
+export function setMovieSearch(movieName) {
+  movieSearch.params = `&query=${movieName}`;
 }
