@@ -1,0 +1,121 @@
+.darkmode-toggle {
+  z-index: 100;
+}
+
+.darkmode--activated p,
+.darkmode--activated .film-card__title {
+  color: #b1b1b1;
+}
+
+.darkmode--activated .avd__close-btn,
+.darkmode--activated .modal__close-btn {
+  fill: #b1b1b1;
+}
+
+// модалка
+.darkmode--activated .modal,
+.darkmode--activated .container-footer-modal,
+.darkmode--activated .command__card,
+.darkmode--activated .ac,
+.darkmode--activated .torrentTable {
+  background-color: black;
+}
+
+.darkmode--activated .team-title {
+  color: #b1b1b1;
+}
+.darkmode--activated .film__button,
+.darkmode--activated .qualityBtn {
+  background-color: #b1b1b1;
+  border: #b1b1b1;
+}
+
+.darkmode--activated .tui-prev {
+  background-color: #b1b1b1;
+}
+
+.darkmode--activated .ac .ac-trigger,
+.darkmode--activated .torrentTable,
+.torrentTable__btn {
+  color: #b1b1b1;
+}
+
+.darkmode--activated .torrentTable__btn {
+  color: #b1b1b1;
+}
+
+.darkmode--activated .tui-pagination {
+  color: #b1b1b1;
+}
+
+.darkmode--activated .tui-pagination .tui-prev,
+.darkmode--activated .tui-pagination .tui-next {
+  background-color: #b1b1b1;
+}
+
+.darkmode--activated .film__title,
+.darkmode--activated .command__card--title {
+  color: #ff6b08;
+}
+
+.darkmode--activated .watch-online__text {
+  color: #ff6b08;
+  background-color: black;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  visibility: hidden;
+  display: none;
+}
+
+.check {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 18px;
+  background-color: #ff6b08;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: ease-in 0.5s;
+}
+
+input:checked[type='checkbox'] ~ .check {
+  background-color: rgb(142, 142, 142);
+  /*   box-shadow: 0 0 0 1200px #092c3e; */
+}
+
+.check:before {
+  content: '☀';
+  position: absolute;
+  top: 1.5px;
+  left: 4px;
+  // background-color: #fff;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  transition: all 0.5s;
+}
+
+input:checked[type='checkbox'] ~ .check:before {
+  transform: translateX(-50px);
+}
+
+.check:after {
+  content: '🌑';
+  position: absolute;
+  top: 1.5px;
+  right: 4px;
+  background-color: #092c3e;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  transform: translateX(50px);
+  transition: all 0.5s;
+}
+
+input:checked[type='checkbox'] ~ .check:after {
+  transform: translateX(0px);
+}

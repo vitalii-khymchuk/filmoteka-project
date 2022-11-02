@@ -3,39 +3,14 @@ import * as genres from '/src/data/genres.json';
 import { createAndRenderMarkup } from '../markupCard';
 import { initPagination } from '../pagination/pagination';
 import { spinnerPlay, spinnerStop } from '../spinner';
-import { initPagination } from '../pagination/pagination';
+import { ThemovieAPI } from './APIclass';
 import { refs } from '../refs';
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
-
-export class ThemovieAPI {
-  #api = 'c6849c57578619bd16dafe22e211e348';
-  #page = 1;
-  #trending = 'trending';
-  #movie = 'movie';
-
-  async getFilms() {
-    const urlAXIOS = `${this.#trending}/${this.#movie}/day?api_key=${
-      this.#api
-    }&page=${this.#page}`;
-
-    const { data } = await axios.get(urlAXIOS);
-    return data;
-  }
-
-  get page() {
-    return this.#page;
-  }
-
-  set page(newPage) {
-    this.#page = newPage;
-  }
-}
 /////// /////// /////// /////// ///////
 
-export const themovie = new ThemovieAPI();
+export const themovie = new ThemovieAPI('discover/movie?');
 
-export async function getPopularFilms() {
+export async function getPopularFilms(params) {
   try {
     spinnerPlay();
     if (localStorage.getItem('page')) {
@@ -45,7 +20,7 @@ export async function getPopularFilms() {
     const parced = JSON.stringify(genres);
     const genresFilmData = JSON.parse(parced);
 
-    const data = await themovie.getFilms();
+    const data = await themovie.getFilms(params);
     const { results } = data;
 
     initPagination(data, getPopularFilms);
@@ -59,10 +34,12 @@ export async function getPopularFilms() {
   }
 }
 
-getPopularFilms();
+// getPopularFilms();
 
-refs.logo.addEventListener('click', clearLocalStorage);
+refs.logo.addEventListener('click', resetLocalStorage);
 
-function clearLocalStorage() {
-  localStorage.removeItem('page');
+function resetLocalStorage() {
+  localStorage.setItem('action', 'popular');
+  localStorage.setItem('page', 1);
+  localStorage.setItem('query', '');
 }

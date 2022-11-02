@@ -1,51 +1,65 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import axios from 'axios';
-import { createMarkupCard } from './markupCard';
-import { getActualData } from './markupCard';
+import { createAndRenderMarkup } from './markupCard';
+import { spinnerPlay, spinnerStop } from './spinner';
+import { ThemovieAPI } from './renderPopularFilm/APIclass';
+import { initPagination } from './pagination/pagination';
 import { refs } from './refs';
 
-let page = 1;
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-const API_KEY = 'c6849c57578619bd16dafe22e211e348';
+export let movieSearch;
 
-export async function searchMovieByName(name, page) {
-  try {
-    const response = await axios.get(
-      `search/movie?api_key=${API_KEY}&language=en-US&query=${name}&page=${page}&include_adult=false`
-    );
-    return response.data.results;
-  } catch (error) {
-    console.error(error);
-  }
+export function initSearchMovie() {
+  movieSearch = new ThemovieAPI('search/movie?');
+  refs.searchForm.addEventListener('submit', onSearchSubmit);
 }
 
 async function onSearchSubmit(e) {
   e.preventDefault();
-  page = 1;
   const movieName = e.target.elements.searchQuery.value;
-
+  saveToLocalStorage(movieName);
+  setMovieSearch(movieName);
   if (movieName !== '') {
-    try {
-      const result = await searchMovieByName(movieName, page);
-      if (result.length !== 0) {
-        clearMarkup();
-        const results = getActualData(result);
-        createMarkupCard(results);
-      } else {
-        clearMarkup();
-        Notify.failure(
-          'Search result not successful. Enter the correct movie name and try again'
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    updateItems();
   } else {
     Notify.failure('Please, enter your movie name');
   }
 }
-refs.searchForm.addEventListener('submit', onSearchSubmit);
+
+export async function updateItems() {
+  try {
+    getPageFromLocalStorage();
+    clearMarkup();
+    spinnerPlay();
+    const data = await movieSearch.getFilms();
+    spinnerStop();
+    createAndRenderMarkup(data.results);
+    if (data.results[0]) {
+      initPagination(data, updateItems);
+    } else {
+      Notify.info(
+        'Search result not successful. Enter the correct movie name and try again'
+      );
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 function clearMarkup() {
   refs.movieCards.innerHTML = '';
+}
+
+function saveToLocalStorage(movieName) {
+  localStorage.setItem('action', 'search');
+  localStorage.setItem('query', `&query=${movieName}`);
+  localStorage.setItem('page', 1);
+}
+
+function getPageFromLocalStorage() {
+  if (localStorage.getItem('page')) {
+    movieSearch.page = localStorage.getItem('page');
+  }
+}
+
+export function setMovieSearch(movieName) {
+  movieSearch.params = `&query=${movieName}`;
 }
