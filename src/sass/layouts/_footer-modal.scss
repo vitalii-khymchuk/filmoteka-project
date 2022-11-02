@@ -24,12 +24,16 @@
 .team-title {
   font-size: 30px;
   text-transform: uppercase;
-  color: $accentColor;
+  color: $mainTextColor;
   text-align: center;
   margin-bottom: 15px;
+  border-bottom: 1px solid $accentColor;
 
 }
 
+.team-title__not {
+  color: $accentColor;
+}
 
 .footer-modal-our-team-list {
   display: flex;
