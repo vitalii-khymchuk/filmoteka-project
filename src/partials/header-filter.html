@@ -1,0 +1,83 @@
+<!-- filters -->
+
+<form class="header__form" id="header__form">
+  <div class="header__form-genres">
+    <label for="genre" class="header__form-text">Сhoose a genre:</label>
+    <select name="genre" id="genre" class="header__form-choice">
+      <option value="28" class="header__form-genres-name" data-filter="28">
+        Action
+      </option>
+      <option value="12" class="header__form-genres-name" data-filter="12">
+        Adventure
+      </option>
+      <option value="16" class="header__form-genres-name" data-filter="16">
+        Animation
+      </option>
+      <option value="35" class="header__form-genres-name" data-filter="35">
+        Comedy
+      </option>
+      <option value="99" class="header__form-genres-name" data-filter="99">
+        Documentary
+      </option>
+      <option value="18" class="header__form-genres-name" data-filter="18">
+        Drama
+      </option>
+      <option value="53" class="header__form-genres-name" data-filter="53">
+        Thriller
+      </option>
+    </select>
+  </div>
+
+  <div class="header__form-sorts">
+    <label for="sort" class="header__form-text">Sort by:</label>
+    <select name="sort" id="sort" class="header__form-choice">
+      <option
+        value="popularity.asc"
+        class="header__form-sort-by"
+        data-filter="ratingUp"
+      >
+        RatingUp
+      </option>
+      <option
+        value="popularity.desc"
+        class="header__form-sort-by"
+        data-filter="ratingDown"
+      >
+        RatingDown
+      </option>
+      <option
+        value="release_date.desc"
+        class="header__form-sort-by"
+        data-filter="firstNew"
+      >
+        First new
+      </option>
+      <option
+        value="release_date.asc"
+        class="header__form-sort-by"
+        data-filter="firstOld"
+      >
+        First old
+      </option>
+    </select>
+  </div>
+
+  <div class="header__form-release">
+    <label for="yearStart" class="header__form-text">Select year: from</label>
+    <select
+      id="yearStart"
+      name="yearStart"
+      class="header__form-choice"
+      data-filter="yearStart"
+    ></select>
+    <label for="yearEnd" class="header__form-text">to</label>
+    <select
+      id="yearEnd"
+      name="yearEnd"
+      class="header__form-choice"
+      data-filter="yearEnd"
+    ></select>
+  </div>
+
+  <button type="submit" class="btn header__form-btn">Search</button>
+</form>
