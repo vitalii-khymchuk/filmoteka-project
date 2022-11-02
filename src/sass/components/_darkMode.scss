@@ -13,10 +13,18 @@
 }
 
 // модалка
-.darkmode--activated .modal {
+.darkmode--activated .modal,
+.darkmode--activated .container-footer-modal,
+.darkmode--activated .command__card {
   background-color: black;
 }
-.darkmode--activated .film__title {
+
+.darkmode--activated .tui-pagination {
+  color: #b1b1b1;
+}
+
+.darkmode--activated .film__title,
+.darkmode--activated .command__card--title {
   color: #ff6b08;
 }
 

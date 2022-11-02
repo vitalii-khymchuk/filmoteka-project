@@ -44,6 +44,10 @@
   border-radius: 5px;
 }
 
+.darkmode--activated .tui-page-btn {
+  color: #8a8a8a;
+}
+
 /* .tui-pagination .tui-page-btn:hover {
     background-color: #f4f4f4;
 } */
