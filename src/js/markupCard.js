@@ -84,7 +84,9 @@ export function vote_averageRound(vote_average) {
 
 export function createMarkupCard(results) {
   if (!results[0]) {
-    refs.movieCards.innerHTML = `<img src=${pictureExample} alt="movie not found"/>`;
+    refs.movieCards.innerHTML = `<div class="card-set-wrap">
+    <p class="card-set__backgnd-text">Movies not added yet</p>
+  </div>`;
   } else {
     refs.movieCards.innerHTML = cardTpl(results);
   }

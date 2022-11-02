@@ -5,6 +5,7 @@ import { initModal } from './js/modal-film/modal-film';
 import './js/advBlock';
 import './js/buttonUp';
 import './js/footer-modal';
+import './js/darkMode';
 
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);

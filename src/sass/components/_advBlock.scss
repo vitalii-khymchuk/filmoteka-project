@@ -25,6 +25,7 @@
 .adv__link {
   margin-left: 10px;
   color: white;
+  margin-right: 13px;
 
   @include tab-only {
     font-size: 16px;
@@ -42,8 +43,8 @@
 .avd__close-btn {
   opacity: 0.8;
   position: absolute;
-  top: 1.5px;
-  right: 2px;
+  top: 1px;
+  right: 1px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,11 +61,11 @@
   }
 
   @include tab-only {
-    top: 5px;
-    right: 10px;
+    top: 3px;
+    right: 5px;
   }
   @include pc-only {
-    top: 5px;
+    top: 3px;
     right: 5px;
   }
 }

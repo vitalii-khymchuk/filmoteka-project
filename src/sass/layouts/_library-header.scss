@@ -51,3 +51,9 @@
     border: 1px solid $accentColor;
   }
 }
+
+.library-header__btn--active {
+  background-color: $accentColor;
+  color: $secondaryTextColor;
+  border: 1px solid $accentColor;
+}
