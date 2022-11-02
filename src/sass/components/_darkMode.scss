@@ -21,6 +21,10 @@
   background-color: black;
 }
 
+.darkmode--activated .team-title {
+  color: #b1b1b1;
+}
+
 .darkmode--activated .ac .ac-trigger,
 .darkmode--activated .torrentTable,
 .torrentTable__btn {
