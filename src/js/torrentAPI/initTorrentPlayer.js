@@ -1,5 +1,4 @@
 export function initTorrentPlayer(link) {
-  console.log(link);
   window.webtor = window.webtor || [];
   window.webtor.push({
     id: 'player',

@@ -34,12 +34,11 @@ export async function updateItems() {
     spinnerPlay();
     const data = await movieSearch.getFilms();
     spinnerStop();
-    if (data.results.length !== 0) {
-      createAndRenderMarkup(data.results);
+    createAndRenderMarkup(data.results);
+    if (data.results[0]) {
       initPagination(data, updateItems);
     } else {
-      createMarkupCard([]);
-      Notify.failure(
+      Notify.info(
         'Search result not successful. Enter the correct movie name and try again'
       );
     }
