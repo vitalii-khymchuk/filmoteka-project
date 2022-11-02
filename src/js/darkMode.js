@@ -20,12 +20,22 @@ const checkbox = document.getElementById('input');
 const checkedColor = '#092c3e';
 const uncheckedColor = '#fff';
 
+function checkLocalStorage() {
+  if (
+    localStorage.getItem('darkmode') === 'true' &&
+    checkbox.checked == false
+  ) {
+    checkbox.checked = true;
+    darkmode.toggle();
+  }
+}
+
+checkLocalStorage();
+
 function changeColor() {
   if (checkbox.checked) {
-    document.body.style.backgroundColor = checkedColor;
     darkmode.toggle();
   } else {
-    document.body.style.backgroundColor = uncheckedColor;
     darkmode.toggle();
   }
 }
