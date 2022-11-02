@@ -4,12 +4,12 @@
 
 .darkmode--activated p,
 .darkmode--activated .film-card__title {
-  color: white;
+  color: #b1b1b1;
 }
 
 .darkmode--activated .avd__close-btn,
 .darkmode--activated .modal__close-btn {
-  fill: white;
+  fill: #b1b1b1;
 }
 
 // модалка
@@ -24,19 +24,33 @@
 .darkmode--activated .team-title {
   color: #b1b1b1;
 }
+.darkmode--activated .film__button,
+.darkmode--activated .qualityBtn {
+  background-color: #b1b1b1;
+  border: #b1b1b1;
+}
+
+.darkmode--activated .tui-prev {
+  background-color: #b1b1b1;
+}
 
 .darkmode--activated .ac .ac-trigger,
 .darkmode--activated .torrentTable,
 .torrentTable__btn {
-  color: white;
+  color: #b1b1b1;
 }
 
 .darkmode--activated .torrentTable__btn {
-  background: white;
+  color: #b1b1b1;
 }
 
 .darkmode--activated .tui-pagination {
   color: #b1b1b1;
+}
+
+.darkmode--activated .tui-pagination .tui-prev,
+.darkmode--activated .tui-pagination .tui-next {
+  background-color: #b1b1b1;
 }
 
 .darkmode--activated .film__title,
