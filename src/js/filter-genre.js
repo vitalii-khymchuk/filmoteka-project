@@ -18,3 +18,14 @@ for (let yearEnd = 1920; yearEnd <= 2035; yearEnd++) {
   let options = document.createElement('OPTION');
   document.getElementById('yearEnd').appendChild(options).innerHTML = yearEnd;
 }
+
+const formElement = document.getElementById('header__form'); // достаем элемент формы
+formElement.addEventListener('submit', evt => {
+  evt.preventDefault();
+  const formData = new formData(formElement); // эл-ты формы закидываем в formData
+
+  const genre = formData.get('genre'); // 'genre'
+  const sortBy = formData.get('sort'); // 'sort'
+  const yearStart = formData.get('yearStart'); // 'yearStart'
+  const yearEnd = formData.get('yearEnd'); // ''yearEnd'
+});

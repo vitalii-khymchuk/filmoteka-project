@@ -1,42 +1,131 @@
-.header__form {
-  display: flex;
-  justify-content: start;
-  padding-top: 30px;
+@media screen and (min-width: 1280px) {
+  .header__form {
+    display: flex;
+    justify-content: start;
+    padding-top: 30px;
+  }
+
+  .header__form-text {
+    color: $mainBgColor;
+    margin-right: 10px;
+  }
+
+  .header__form-choice {
+    margin-right: 30px;
+    background-color: transparent;
+    border: 1px solid #8c8c8c00;
+    color: $accentColor;
+    border-radius: 3px;
+    box-shadow: -11px -11px 0px 1px rgba(255, 255, 255, 0.05) inset;
+    -webkit-box-shadow: -11px -11px 10px 1px rgba(255, 255, 255, 0.05) inset;
+    -moz-box-shadow: -11px -11px 10px 1px rgba(255, 255, 255, 0.05) inset;
+    transition: border 300ms ease-in-out;
+  }
+
+  .header__form-choice:hover,
+  .header__form-choice:focus {
+    border: 1px solid #8c8c8c1f;
+  }
+
+  .header__form-btn {
+    border-radius: 3px;
+    border: 1px solid $accentColor;
+    color: $mainBgColor;
+    background-color: transparent;
+    transition: border 300ms ease-in-out;
+    transition: color 300ms ease-in-out;
+  }
+
+  .header__form-btn:hover,
+  .header__form-btn:focus {
+    border: 1px solid $mainBgColor;
+    color: $accentColor;
+  }
 }
 
-.header__form-text {
-  color: $mainBgColor;
-  margin-right: 10px;
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .header__form {
+    display: flex;
+    justify-content: start;
+    padding-top: 30px;
+  }
+
+  .header__form-text {
+    color: $mainBgColor;
+    margin-right: 10px;
+  }
+
+  .header__form-choice {
+    margin-right: 10px;
+    background-color: transparent;
+    border: 1px solid #8c8c8c00;
+    color: $accentColor;
+    border-radius: 3px;
+    box-shadow: -11px -11px 0px 1px rgba(255, 255, 255, 0.05) inset;
+    -webkit-box-shadow: -11px -11px 10px 1px rgba(255, 255, 255, 0.05) inset;
+    -moz-box-shadow: -11px -11px 10px 1px rgba(255, 255, 255, 0.05) inset;
+    transition: border 300ms ease-in-out;
+  }
+
+  .header__form-choice:hover,
+  .header__form-choice:focus {
+    border: 1px solid #8c8c8c1f;
+  }
+
+  .header__form-btn {
+    border-radius: 3px;
+    border: 1px solid $accentColor;
+    color: $mainBgColor;
+    background-color: transparent;
+    transition: border 300ms ease-in-out;
+    transition: color 300ms ease-in-out;
+  }
+
+  .header__form-btn:hover,
+  .header__form-btn:focus {
+    border: 1px solid $mainBgColor;
+    color: $accentColor;
+  }
 }
 
-.header__form-choice {
-  margin-right: 30px;
-  background-color: transparent;
-  border: 1px solid #8c8c8c00;
-  color: $accentColor;
-  border-radius: 3px;
-  box-shadow: -11px -11px 0px 1px rgba(255, 255, 255, 0.05) inset;
-  -webkit-box-shadow: -11px -11px 10px 1px rgba(255, 255, 255, 0.05) inset;
-  -moz-box-shadow: -11px -11px 10px 1px rgba(255, 255, 255, 0.05) inset;
-  transition: border 300ms ease-in-out;
-}
+@media screen and (max-width: 767px) {
+  .header__form {
+    display: block;
+    padding-top: 10px;
+  }
 
-.header__form-choice:hover,
-.header__form-choice:focus {
-  border: 1px solid #8c8c8c1f;
-}
+  .header__form-text {
+    color: $mainBgColor;
+    font-size: 8px;
+  }
 
-.header__form-btn {
-  border-radius: 3px;
-  border: 1px solid $accentColor;
-  color: $mainBgColor;
-  background-color: transparent;
-  transition: border 300ms ease-in-out;
-  transition: color 300ms ease-in-out;
-}
+  .header__form-choice {
+    font-size: 8px;
+    margin-right: 10px;
+    background-color: transparent;
+    border: 1px solid #8c8c8c00;
+    color: $accentColor;
+    border-radius: 3px;
+    box-shadow: -11px -11px 0px 1px rgba(255, 255, 255, 0.05) inset;
+    -webkit-box-shadow: -11px -11px 10px 1px rgba(255, 255, 255, 0.05) inset;
+    -moz-box-shadow: -11px -11px 10px 1px rgba(255, 255, 255, 0.05) inset;
+    transition: border 300ms ease-in-out;
+  }
 
-.header__form-btn:hover,
-.header__form-btn:focus {
-  border: 1px solid $mainBgColor;
-  color: $accentColor;
+  .header__form-choice:hover,
+  .header__form-choice:focus {
+    border: 1px solid #8c8c8c1f;
+  }
+
+  .header__form-btn {
+    font-family: inherit;
+    font-size: 8px;
+    border-radius: 3px;
+    border: 1px solid $accentColor;
+    color: $mainBgColor;
+    background-color: transparent;
+    transition: border 300ms ease-in-out;
+    transition: color 300ms ease-in-out;
+    margin-top: 5px;
+  }
 }
