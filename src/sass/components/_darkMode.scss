@@ -20,6 +20,11 @@
   color: #ff6b08;
 }
 
+.darkmode--activated .watch-online__text {
+  color: #ff6b08;
+  background-color: black;
+}
+
 input[type='checkbox'] {
   -webkit-appearance: none;
   appearance: none;
