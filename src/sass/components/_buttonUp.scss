@@ -39,3 +39,9 @@
   visibility: visible;
   right: calc(5%);
 }
+
+@media screen and (max-width: 479px) {
+  #toTop {
+    bottom: 140px;
+  }
+}
