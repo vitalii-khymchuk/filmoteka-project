@@ -17,6 +17,6 @@ export const refs = {
   openFooterModalBtn: document.querySelector('.footer__btn'),
   closeFooterModalBtn: document.querySelector('.js-close-footer'),
   backdropModalFooter: document.querySelector('.js-backdrop-footer'),
-  body: document.querySelector('body'),
   logo: document.querySelector('.header-nav__link'),
+  headerForm: document.querySelector('.header__form'),
 };

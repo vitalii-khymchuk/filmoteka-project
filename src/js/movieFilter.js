@@ -25,15 +25,12 @@ function onFilterSubmit(evt) {
 }
 
 export function initFilter() {
-  document
-    .querySelector('.header__form')
-    .addEventListener('submit', onFilterSubmit);
-  addYearsToFilter();
+  refs.headerForm.addEventListener('submit', onFilterSubmit);
   filterMovie = new ThemovieAPI('discover/movie?');
 }
 
 function makeParamString({ genre, yearFrom, yearTo, sortBy }) {
-  return `&primary_release_date.gte=${yearFrom}-01-01&primary_release_date.lte=${yearTo}-12-31`;
+  return `&primary_release_date.gte=${yearFrom}-01-01&primary_release_date.lte=${yearTo}-12-31&with_genres=${genre}&sort_by=${sortBy}`;
 }
 
 export async function updateFilteredItems() {
@@ -53,19 +50,6 @@ export async function updateFilteredItems() {
     }
   } catch (error) {
     console.log(error);
-  }
-}
-
-function addYearsToFilter() {
-  for (let yearStart = 1920; yearStart <= 2035; yearStart++) {
-    let options = document.createElement('OPTION');
-    document.getElementById('yearStart').appendChild(options).innerHTML =
-      yearStart;
-  }
-
-  for (let yearEnd = 1920; yearEnd <= 2035; yearEnd++) {
-    let options = document.createElement('OPTION');
-    document.getElementById('yearEnd').appendChild(options).innerHTML = yearEnd;
   }
 }
 
