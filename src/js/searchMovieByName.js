@@ -1,18 +1,15 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import axios from 'axios';
 import { createAndRenderMarkup } from './markupCard';
 import { spinnerPlay, spinnerStop } from './spinner';
 import { ThemovieAPI } from './renderPopularFilm/APIclass';
 import { initPagination } from './pagination/pagination';
 import { refs } from './refs';
-import { initRestore } from './restore/restore';
 
 export let movieSearch;
 
 export function initSearchMovie() {
   movieSearch = new ThemovieAPI('search/movie?');
   refs.searchForm.addEventListener('submit', onSearchSubmit);
-  initRestore();
 }
 
 async function onSearchSubmit(e) {
