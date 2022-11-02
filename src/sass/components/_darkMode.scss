@@ -13,11 +13,36 @@
 }
 
 // модалка
-.darkmode--activated .modal {
+.darkmode--activated .modal,
+.darkmode--activated .container-footer-modal,
+.darkmode--activated .command__card,
+.darkmode--activated .ac,
+.darkmode--activated .torrentTable {
   background-color: black;
 }
-.darkmode--activated .film__title {
+
+.darkmode--activated .ac .ac-trigger,
+.darkmode--activated .torrentTable,
+.torrentTable__btn {
+  color: white;
+}
+
+.darkmode--activated .torrentTable__btn {
+  background: white;
+}
+
+.darkmode--activated .tui-pagination {
+  color: #b1b1b1;
+}
+
+.darkmode--activated .film__title,
+.darkmode--activated .command__card--title {
   color: #ff6b08;
+}
+
+.darkmode--activated .watch-online__text {
+  color: #ff6b08;
+  background-color: black;
 }
 
 input[type='checkbox'] {
