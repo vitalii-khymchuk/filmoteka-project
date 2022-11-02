@@ -71,14 +71,14 @@
     <label for="sort" class="header__form-text">Sort by:</label>
     <select name="sort" id="sort" class="header__form-choice">
       <option
-        value="popularity.desc"
+        value="vote_average.desc"
         class="header__form-sort-by"
         data-filter="ratingDown"
       >
         RatingDown
       </option>
       <option
-        value="popularity.asc"
+        value="vote_average.asc"
         class="header__form-sort-by"
         data-filter="ratingUp"
       >
@@ -111,20 +111,6 @@
         data-filter="firstOld"
       >
         RevenueDown
-      </option>
-      <option
-        value="vote_count.asc"
-        class="header__form-sort-by"
-        data-filter="firstOld"
-      >
-        Vote count Up
-      </option>
-      <option
-        value="vote_count.desc"
-        class="header__form-sort-by"
-        data-filter="firstOld"
-      >
-        Vote count Down
       </option>
     </select>
   </div>
