@@ -39,7 +39,6 @@ export async function updateFilteredItems() {
     clearMarkup();
     spinnerPlay();
     const data = await filterMovie.getFilms();
-    spinnerStop();
     createAndRenderMarkup(data.results);
     if (data.results[0]) {
       initPagination(data, updateFilteredItems);
@@ -50,9 +49,10 @@ export async function updateFilteredItems() {
       );
     }
   } catch (error) {
-    spinnerStop();
     createAndRenderMarkup([]);
     console.log(error);
+  } finally {
+    spinnerStop();
   }
 }
 
