@@ -1,10 +1,10 @@
 import { themovie } from '../renderPopularFilm/renderPopFilm';
 import { movieSearch } from '../searchMovieByName';
 import Pagination from 'tui-pagination';
-import '../pagination/tui-pagination.css';
+import '../../css/tui-pagination.css';
 import { scrollTo } from '../buttonUp';
+import { refs } from '../refs';
 
-const container = document.getElementById('pagination');
 export let pagination;
 
 export function initPagination(data, callback) {
@@ -36,15 +36,19 @@ export function initPagination(data, callback) {
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
   };
-  pagination = new Pagination(container, options);
+  pagination = new Pagination(refs.paginationContainer, options);
 
   pagination.on('afterMove', event => {
     const currentPage = event.page;
 
     themovie.page = currentPage;
     movieSearch.page = currentPage;
-    localStorage.setItem('page', currentPage);
+    sessionStorage.setItem('page', currentPage);
     callback();
     scrollTo(0, 400);
   });
+}
+
+export function destroyPagination() {
+  refs.paginationContainer.innerHTML = '';
 }

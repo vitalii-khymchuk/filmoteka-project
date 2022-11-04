@@ -1,9 +1,9 @@
 import { getPopularFilms } from '../renderPopularFilm/renderPopFilm';
 import { setMovieSearch, updateItems } from '../searchMovieByName';
 import { saveFilterParams, updateFilteredItems } from '../movieFilter';
-const action = localStorage.getItem('action');
-const page = localStorage.getItem('page');
-const query = localStorage.getItem('query');
+const action = sessionStorage.getItem('action');
+const page = sessionStorage.getItem('page');
+const query = sessionStorage.getItem('query');
 
 export function initRestore() {
   switch (action) {

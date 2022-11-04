@@ -1,4 +1,4 @@
-import { refs } from '../js/refs';
+import { refs } from './refs';
 
 refs.openFooterModalBtn.addEventListener('click', onOpenFooterModal);
 

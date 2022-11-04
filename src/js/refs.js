@@ -19,4 +19,5 @@ export const refs = {
   backdropModalFooter: document.querySelector('.js-backdrop-footer'),
   logo: document.querySelector('.header-nav__link'),
   headerForm: document.querySelector('.header__form'),
+  paginationContainer: document.querySelector('.tui-pagination'),
 };

@@ -2,7 +2,7 @@ import { ThemovieAPI } from './renderPopularFilm/APIclass';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { createAndRenderMarkup } from './markupCard';
 import { spinnerPlay, spinnerStop } from './spinner';
-import { initPagination } from './pagination/pagination';
+import { initPagination, destroyPagination } from './pagination/pagination';
 import { refs } from './refs';
 
 let filterMovie;
@@ -20,7 +20,7 @@ function onFilterSubmit(evt) {
     yearTo: yearEnd,
   });
   saveFilterParams(paramsString);
-  saveToLocalStorage(paramsString);
+  saveToSessionStorage(paramsString);
   updateFilteredItems();
 }
 
@@ -35,7 +35,7 @@ function makeParamString({ genre, yearFrom, yearTo, sortBy }) {
 
 export async function updateFilteredItems() {
   try {
-    getPageFromLocalStorage();
+    getPageFromSessionStorage();
     clearMarkup();
     spinnerPlay();
     const data = await filterMovie.getFilms();
@@ -44,25 +44,28 @@ export async function updateFilteredItems() {
     if (data.results[0]) {
       initPagination(data, updateFilteredItems);
     } else {
+      destroyPagination();
       Notify.info(
-        'Search result not successful. Enter the correct movie name and try again'
+        'Movies not found by your request. Enter other parameters and try again'
       );
     }
   } catch (error) {
+    spinnerStop();
+    createAndRenderMarkup([]);
     console.log(error);
   }
 }
 
-function getPageFromLocalStorage() {
-  if (localStorage.getItem('page')) {
-    filterMovie.page = localStorage.getItem('page');
+function getPageFromSessionStorage() {
+  if (sessionStorage.getItem('page')) {
+    filterMovie.page = sessionStorage.getItem('page');
   }
 }
 
-function saveToLocalStorage(filterParams) {
-  localStorage.setItem('action', 'filter');
-  localStorage.setItem('query', filterParams);
-  localStorage.setItem('page', 1);
+function saveToSessionStorage(filterParams) {
+  sessionStorage.setItem('action', 'filter');
+  sessionStorage.setItem('query', filterParams);
+  sessionStorage.setItem('page', 1);
 }
 
 export function saveFilterParams(params) {

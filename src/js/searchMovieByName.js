@@ -2,7 +2,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { createAndRenderMarkup } from './markupCard';
 import { spinnerPlay, spinnerStop } from './spinner';
 import { ThemovieAPI } from './renderPopularFilm/APIclass';
-import { initPagination } from './pagination/pagination';
+import { initPagination, destroyPagination } from './pagination/pagination';
 import { refs } from './refs';
 
 export let movieSearch;
@@ -15,7 +15,7 @@ export function initSearchMovie() {
 async function onSearchSubmit(e) {
   e.preventDefault();
   const movieName = e.target.elements.searchQuery.value;
-  saveToLocalStorage(movieName);
+  saveToSessionStorage(movieName);
   setMovieSearch(movieName);
   if (movieName !== '') {
     updateItems();
@@ -35,11 +35,14 @@ export async function updateItems() {
     if (data.results[0]) {
       initPagination(data, updateItems);
     } else {
+      destroyPagination();
       Notify.info(
         'Search result not successful. Enter the correct movie name and try again'
       );
     }
   } catch (error) {
+    spinnerStop();
+    createAndRenderMarkup([]);
     console.log(error);
   }
 }
@@ -48,15 +51,15 @@ function clearMarkup() {
   refs.movieCards.innerHTML = '';
 }
 
-function saveToLocalStorage(movieName) {
-  localStorage.setItem('action', 'search');
-  localStorage.setItem('query', `&query=${movieName}`);
-  localStorage.setItem('page', 1);
+function saveToSessionStorage(movieName) {
+  sessionStorage.setItem('action', 'search');
+  sessionStorage.setItem('query', `&query=${movieName}`);
+  sessionStorage.setItem('page', 1);
 }
 
 function getPageFromLocalStorage() {
-  if (localStorage.getItem('page')) {
-    movieSearch.page = localStorage.getItem('page');
+  if (sessionStorage.getItem('page')) {
+    movieSearch.page = sessionStorage.getItem('page');
   }
 }
 

@@ -21,10 +21,7 @@ const checkedColor = '#092c3e';
 const uncheckedColor = '#fff';
 
 function checkLocalStorage() {
-  if (
-    localStorage.getItem('darkmode') === 'true' &&
-    checkbox.checked == false
-  ) {
+  if (localStorage.getItem('darkmode') === 'true') {
     checkbox.checked = true;
     darkmode.toggle();
   }

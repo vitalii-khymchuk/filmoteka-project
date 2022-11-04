@@ -13,8 +13,8 @@ export const themovie = new ThemovieAPI('discover/movie?');
 export async function getPopularFilms(params) {
   try {
     spinnerPlay();
-    if (localStorage.getItem('page')) {
-      themovie.page = localStorage.getItem('page');
+    if (sessionStorage.getItem('page')) {
+      themovie.page = sessionStorage.getItem('page');
     }
 
     const parced = JSON.stringify(genres);
@@ -36,10 +36,10 @@ export async function getPopularFilms(params) {
 
 // getPopularFilms();
 
-refs.logo.addEventListener('click', resetLocalStorage);
+refs.logo.addEventListener('click', resetSessionStorage);
 
-function resetLocalStorage() {
-  localStorage.setItem('action', 'popular');
-  localStorage.setItem('page', 1);
-  localStorage.setItem('query', '');
+function resetSessionStorage() {
+  sessionStorage.setItem('action', 'popular');
+  sessionStorage.setItem('page', 1);
+  sessionStorage.setItem('query', '');
 }
