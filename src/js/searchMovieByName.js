@@ -30,7 +30,6 @@ export async function updateItems() {
     clearMarkup();
     spinnerPlay();
     const data = await movieSearch.getFilms();
-    spinnerStop();
     createAndRenderMarkup(data.results);
     if (data.results[0]) {
       initPagination(data, updateItems);
@@ -41,9 +40,10 @@ export async function updateItems() {
       );
     }
   } catch (error) {
-    spinnerStop();
     createAndRenderMarkup([]);
     console.log(error);
+  } finally {
+    spinnerStop();
   }
 }
 
