@@ -1,5 +1,5 @@
 import modalFilmTpl from '../../templates/mod-film.hbs';
-import { fetchMovieById } from '../modal-film/render-modal-film';
+import { fetchMovieById } from './renderModalFilm';
 import { prepareMovieToSaving } from '../localStorageAPI/saveMovie';
 import { refs } from '../refs';
 import { getActualData } from '../markupCard';

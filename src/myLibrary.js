@@ -1,10 +1,10 @@
 import { refs } from './js/refs';
 import { getSavedMovies } from './js/localStorageAPI/saveMovie';
 import { createAndRenderMarkup } from './js/markupCard';
-import { initModal } from './js/modal-film/modal-film';
+import { initModal } from './js/modalFilm/modalFilm';
 import './js/advBlock';
 import './js/buttonUp';
-import './js/footer-modal';
+import './js/footerModal';
 import './js/darkMode';
 
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);

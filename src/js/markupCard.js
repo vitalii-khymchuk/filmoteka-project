@@ -22,6 +22,9 @@ export function formateGenres(genresCodeArray, genresObjectArray) {
   const genresNames = genresCodeArray
     ? genresCodeArray.map(convertGenre)
     : genresObjectArray.map(e => e.name);
+  if (genresNames[0]) {
+    return 'no genres';
+  }
   let slicedGenres = [...genresNames];
   if (genresNames.length > 3) {
     slicedGenres = slicedGenres.slice(0, 2);
@@ -37,9 +40,10 @@ function convertGenre(genreCode) {
 
 /////////Обрезает дату релиза
 export function sliceDateRelease(data) {
-  return [data].map(item => {
-    return item.slice(0, 4);
-  });
+  if (!data) {
+    return 'no release date';
+  }
+  return data.slice(0, 4);
 }
 
 /////// получает данные с бека и собирает все вместе для рендера
@@ -77,9 +81,10 @@ export function getActualData(results) {
 
 //////округляет оценку
 export function vote_averageRound(vote_average) {
-  return [vote_average].map(item => {
-    return item.toFixed(1);
-  });
+  if (!vote_average) {
+    return '-';
+  }
+  return vote_average.toFixed(1);
 }
 
 export function createMarkupCard(results) {
