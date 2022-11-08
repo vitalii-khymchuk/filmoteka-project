@@ -28,9 +28,10 @@ Project features:
 5. Trailer watching;
 6. Movie streaming (used torrent player);
 7. Torrent download links;
-8. Adaptive layout (mobile first);
-9. Pagination;
-10. Night shift mode;
+8. Restore after page reloading;
+9. Adaptive layout (mobile first);
+10. Pagination;
+11. Night shift mode;
 
 Used API's:
 
