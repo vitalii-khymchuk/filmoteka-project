@@ -22,7 +22,7 @@ export function formateGenres(genresCodeArray, genresObjectArray) {
   const genresNames = genresCodeArray
     ? genresCodeArray.map(convertGenre)
     : genresObjectArray.map(e => e.name);
-  if (genresNames[0]) {
+  if (!genresNames[0]) {
     return 'no genres';
   }
   let slicedGenres = [...genresNames];
